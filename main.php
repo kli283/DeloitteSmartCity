@@ -66,12 +66,14 @@ if (!empty($_GET['id'])) {
         </style>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     </head>
 
     <body>
 
         <div class="topnav">
-          <h1 class="title">ChekPoint</h1>
+          <img src="img/logo.png" class="logo">
 
           <form action="main.php" method="get">
               Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
