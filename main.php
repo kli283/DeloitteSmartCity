@@ -18,13 +18,13 @@ if (empty($_GET['id'])) {
           printf("Query Prep Failed: %s\n", $mysqli->error);
           exit();
         }
-
-        $stmt->bind_param("s", $id);
+        $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
+
         $stmt->fetch();
         $stmt->close();
-  }
+}
 ?>
 
 

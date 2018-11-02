@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TekChange</title>
+        <style>
+            /* Set the size of the div element that contains the map */
+            #map 
+            {
+                height: 400px;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
+        </style>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        <div class="topnav">
+            <input type="text" placeholder="Type in ID">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <h1>ID:</h1>
+        <div id="map"></div>
+        <div class="bottom">
+            <button>Show in Map</button>
+            <select id="categories">
+                <option value="defaultSelect">- SELECT -</option>
+                <option value="food">Food</option>
+                <option value="shopping">Shopping</option>
+                <option value="bank">Banks</option>
+                <option value="mtr">MTR</option>
+            </select>
+            
+            <div class="living">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+       
+        <script>
+            function initMap() 
+            {
+                var map = new google.maps.Map(document.getElementById('map'), 
+                {
+                  zoom: 4,
+                  center: {lat: -33, lng: 151},
+                  disableDefaultUI: true
+                });
+            }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
+        </script>
+  </body>
+>>>>>>> 452e9f0fd2b7e427b6823796980ccf6bf170ec97
+</html>

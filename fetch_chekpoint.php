@@ -34,3 +34,5 @@ $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE 
     echo json_encode($result);
     exit(); 
 ?>
+
+
