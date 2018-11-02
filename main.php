@@ -106,10 +106,10 @@ if (!empty($_GET['id'])) {
 
     <body>
         <div class="topnav">
-          <img src="img/logo.png" class="logo">
+          <img src="img/logo.png" class="logo"> <br></br>
 
           <form action="main.php" method="get">
-              Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
+             <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
               <input class="button" type="submit">
           </form>
 
