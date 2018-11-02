@@ -179,10 +179,11 @@ if (!empty($_GET['id'])) {
                 var features = [];
 
                 for (var store in stores_arr) {
+                  console.log(store);
                     var store_data = {
-                      position: new google.maps.LatLng(store.latitude, store.longitude),
-                      title: store.name,
-                      contentInfo:""
+                      "position": new google.maps.LatLng(store.latitude, store.longitude),
+                      "title": store.name,
+                      "contentInfo":""
                     };
 
                     features.push(store_data);
