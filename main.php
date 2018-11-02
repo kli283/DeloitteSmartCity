@@ -72,7 +72,7 @@ if (!empty($_GET['id'])) {
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $km = $dist * 60 * 1.1515 * 1.609344;
-	 if ($km < 10000) {
+	 if ($km < 20) {
     		$stores[$i]['name'] = $store_name;
     		$stores[$i]['latitude'] = $store_lat;
     		$stores[$i]['longitude'] = $store_long;
