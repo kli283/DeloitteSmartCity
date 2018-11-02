@@ -1,0 +1,22 @@
+.topnav
+{
+    text-align: right;
+}
+
+.bottom
+{
+    text-align: right;
+}
+
+#categories
+{
+    width: 18%;
+}
+
+#mode{
+  visibility: hidden;
+}
+
+#mode2{
+  visibility: hidden;
+}
