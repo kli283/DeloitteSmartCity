@@ -1,8 +1,8 @@
 <?php
 
 if (empty($_GET['id'])) {
-  //don't do anything
-  //echo("No ID specified");
+
+
 } else {
     $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
@@ -48,10 +48,15 @@ if (empty($_GET['id'])) {
         <div class="topnav">
           <form action="main.php" method="get">
               Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
-              <input class="button" type="submit" >
+              <input class="button" name="submit" type="submit" value="search">
           </form>
 
         </div>
+
+        <?php
+        if (!empty($name)) {
+        ?>
+
         <h1>Name: <?php echo $name ?> </h1>
         <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
@@ -90,5 +95,10 @@ if (empty($_GET['id'])) {
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
         </script>
+
+        <?php
+        }
+         ?>
+
   </body>
 </html>
