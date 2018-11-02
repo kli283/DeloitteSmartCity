@@ -48,7 +48,6 @@ if (!empty($_GET['id'])) {
               $stmt->close();
     }
 
-    $category = $_GET['category'];
     $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
     if (!$stmt)
     {
