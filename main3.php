@@ -122,7 +122,7 @@ if (!empty($_GET['id'])) {
           function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
               zoom: 18,
-              center: new google.maps.LatLng(<?php echo $latitude?>, <?php echo $longitude?>),
+              center: new google.maps.LatLng(22.2780691, 114.16490905),
               mapTypeId: 'roadmap'
             });
 
@@ -170,7 +170,6 @@ if (!empty($_GET['id'])) {
         <div class="bottom">
 
             <form action="main3.php" method="get" id="categories">
-                    <input type="hidden" />
                     Category: <select id='lists' onchange="updateValue(this.value)">
                       <option value="defaultSelect">- SELECT -</option>
                        <option value='1' id='one'>food</option>
