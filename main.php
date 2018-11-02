@@ -160,11 +160,11 @@ if (!empty($_GET['id'])) {
             </div>
         </div>
 
-	<?php echo $latitude; ?> <?php echo $longitude;?>	
+	<?php echo $latitude; ?> <?php echo $longitude;?>
 
         <script>
             var stores_arr = <?php echo json_encode($allStores );?>;
-            console.log(stores_arr); 
+            console.log(stores_arr);
 
             function initMap()
             {
@@ -177,6 +177,17 @@ if (!empty($_GET['id'])) {
                 });
 
                 var features = [];
+
+                for (var store in stores_arr) {
+                    var store_data = {
+                      position: new google.maps.LatLng(store.latitude, store.longitude),
+                      title: store.name,
+                      contentInfo:""
+                    };
+
+                    features.push(store_data);
+                    console.log(features);
+                }
 
                 // Create markers.
                 features.forEach(function(feature)
