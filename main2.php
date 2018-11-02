@@ -46,8 +46,11 @@ if (empty($_GET['id'])) {
     
     <body>
         <div class="topnav">
-            <input type="text" placeholder="Type in ID">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <form action="main2.php" method="get">
+                <input type="text" placeholder="Type in ID">
+                <input type="submit"><i class="fa fa-search"></i>
+            </form>
+            
         </div>
         <h1>Name: <?php echo $name ?> </h1>
         <h1>ID: <?php echo $chekpoint_id?> </h1>
@@ -64,11 +67,14 @@ if (empty($_GET['id'])) {
             
             <div class="listing">
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <?php
+                        $query = "SELECT * FROM locations WHERE category='shopping'"
+                        $result = mysql_query($query)
+                        while($row = mysql_fetch_object($result))
+                        {
+                            echo '<li>' .$row->name. '</li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
