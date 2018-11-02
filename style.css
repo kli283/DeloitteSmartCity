@@ -1,11 +1,16 @@
 .topnav
 {
-    text-align: right;
+    text-align: left;
+}
+
+.logo {
+  width: 100vw;
+
 }
 
 .bottom
 {
-    text-align: right;
+    text-align: left;
 }
 
 #categories
