@@ -154,7 +154,7 @@ if (!empty($_GET['id'])) {
               <?php
                   foreach($allStores as $store)
                   {
-                    echo {position: new google.maps.LatLng($store['latitude'],$store['longitude'])};
+                    echo '{position: new google.maps.LatLng('.$store['latitude'].','.$store['longitude'].')}';
                   }
                ?>
             ];
