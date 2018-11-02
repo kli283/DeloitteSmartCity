@@ -94,15 +94,17 @@ if (empty($_GET['id'])) {
         <div id="map"></div>
         <div class="bottom">
             <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '">' ?> Show in Map</button>
-            <form action="#" method="post">
-                <select id="categories">
-                    <option value="defaultSelect">- SELECT -</option>
-                    <option value="food">Food</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="bank">Banks</option>
-                    <option value="mtr">MTR</option>
-                </select>
-            </form>
+              <form action="#" method="post">
+                  <select id="categories">
+                      <option value="defaultSelect">- SELECT -</option>
+                      <option value="food">Food</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="bank">Banks</option>
+                      <option value="mtr">MTR</option>
+                  </select>
+                  <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
+
+              </form>
 
             <div class="listing">
                 <ul>
