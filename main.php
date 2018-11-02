@@ -48,6 +48,10 @@ if (!empty($_GET['id'])) {
               $stmt->fetch();
               $stmt->close();
     }
+
+    if (!empty($_GET['category'])){
+            $category = $_POST['category'];
+        }
   }
     ?>
 
@@ -91,13 +95,17 @@ if (!empty($_GET['id'])) {
         <div id="map"></div>
         <div class="bottom">
             <button>Show in Map</button>
-            <select id="categories">
-                <option value="defaultSelect">- SELECT -</option>
-                <option value="food">Food</option>
-                <option value="shopping">Shopping</option>
-                <option value="bank">Banks</option>
-                <option value="mtr">MTR</option>
-            </select>
+
+            <form action="main.php" method="get" id="categories">
+                    <input type="hidden" />
+                    Category: <select id="categories" name='category' >
+                        <option selected disabled>Choose here</option>
+                        <option value="food">Food</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bank">Banks</option>
+                        <option value="mtr">MTR</option>
+                    </select>
+                    <input class="button" type="submit" form="searchForm"> <br> <br>
 
             <div class="listing">
                 <ul>
