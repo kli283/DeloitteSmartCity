@@ -26,22 +26,20 @@ if (empty($_GET['id'])) {
         $stmt->close();
 
 
-        if (!empty($_GET['category']))
+        $category = $_GET['category'];
+        $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
+        if (!$stmt)
         {
-            $category = $_GET['category'];
-            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
-            if (!$stmt)
-            {
-                printf("Query Prep failed: %s\n", $mysqli->error);
-                exit();
-            }
+          printf("Query Prep failed: %s\n", $mysqli->error);
+          exit();
+        }
 
-            $stmt->bind_param("s", $chekpoint_id);
-            $stmt->execute();
-            $stmt->store_result();
-            $stores = array();
-            $allStores = array();
-            $i = 0;
+        $stmt->bind_param("s", $chekpoint_id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stores = array();
+        $allStores = array();
+        $i = 0;
             if ($stmt->num_rows > 0)
             {
                 $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
@@ -60,7 +58,7 @@ if (empty($_GET['id'])) {
                         $allStores[$i]['category'] = $store_category;
                         $i++;
                     }
-	           }
+
             }
         }
   }
@@ -96,15 +94,16 @@ if (empty($_GET['id'])) {
         <div id="map"></div>
         <div class="bottom">
             <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '">' ?> Show in Map</button>
-            <form action="#" method="post">
-                <select id="categories">
-                    <option value="defaultSelect">- SELECT -</option>
-                    <option value="food">Food</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="bank">Banks</option>
-                    <option value="mtr">MTR</option>
-                </select>
-            </form>
+              <form action="main.php" method="get" id="categories">
+                      <input type="hidden" />
+                      Category: <select id="categories" name='category' >
+                          <option selected disabled>Choose here</option>
+                          <option value="food">Food</option>
+                          <option value="shopping">Shopping</option>
+                          <option value="bank">Banks</option>
+                          <option value="mtr">MTR</option>
+                      </select>
+                      <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
 
             <div class="listing">
                 <ul>
@@ -116,6 +115,12 @@ if (empty($_GET['id'])) {
                                 if($store['category'] == $category)
                                     echo '<li>' .$store['name']. '</li>';
                            }
+                        } else {
+                          foreach($allStores as $store)
+                          {
+                              echo '<li>' .$store['name']. '</li>';
+                          }
+
                         }
 
                     ?>
