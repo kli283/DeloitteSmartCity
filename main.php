@@ -4,6 +4,7 @@ if (empty($_GET['id'])) {
   //don't do anything
   //echo("No ID specified");
 } else {
+    die("YES");
     $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
     if($mysqli->connect_errno) {
