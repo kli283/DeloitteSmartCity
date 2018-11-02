@@ -47,8 +47,8 @@ if (empty($_GET['id'])) {
     <body>
         <div class="topnav">
           <form action="main.php" method="get">
-              Search: <input name="chekpoint_id" type="text" placeholder="Type in ID"> &nbsp
-              <input class="button" name="submit" type="submit" value="search">
+              Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
+              <input class="button" type="submit" >
           </form>
 
         </div>
