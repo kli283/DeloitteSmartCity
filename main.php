@@ -18,6 +18,7 @@ if (empty($_GET['id'])) {
           printf("Query Prep Failed: %s\n", $mysqli->error);
           exit();
         }
+        $seen = true;
         $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
@@ -45,10 +46,13 @@ if (empty($_GET['id'])) {
     </head>
 
     <body>
+
         <div class="topnav">
+          <h1 class="title">ChekPoint</h1>
+
           <form action="main.php" method="get">
               Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
-              <input class="button" name="submit" type="submit" value="search">
+              <input class="button" type="submit">
           </form>
 
         </div>
@@ -97,8 +101,13 @@ if (empty($_GET['id'])) {
         </script>
 
         <?php
-        }
+      } else {
          ?>
+         <p>Sorry! Your search did not come up with any results. Please try again! </p> 
+
+         <?php
+       }
+       ?>
 
   </body>
 </html>
