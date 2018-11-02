@@ -110,7 +110,7 @@ if (!empty($_GET['id'])) {
 
           <form action="main.php" method="get">
              <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
-              <input class="button" type="submit">
+              <input class="modern_button " type="submit">
           </form>
 
         </div>
@@ -119,11 +119,13 @@ if (!empty($_GET['id'])) {
         if (!empty($name)) {
         ?>
 
-        <h1>Name: <?php echo $name ?> </h1>
-        <h1>ID: <?php echo $id?> </h1>
+        <h1 class="text_label">Name: <?php echo $name ?> </h1>
+        <h1 class="text_label">ID: <?php echo $id?> </h1>
         <div id="map"></div>
+
+        <br></br>
         <div class="bottom">
-            <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+            <button class="modern_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
 
             <form action="main.php" method="get" id="categories">
                     <input type="hidden" />
@@ -160,11 +162,11 @@ if (!empty($_GET['id'])) {
                 {
                   zoom: 16,
 //                  center: {lat: -33, lng: 151},
-                    center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>), 
+                    center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>),
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
                 });
-                
+
                 var features = [];
                 <?php
                     if (!empty($_GET['category']))
@@ -176,9 +178,9 @@ if (!empty($_GET['id'])) {
                        }
                     }
                 ?>
-                
+
                 // Create markers.
-                features.forEach(function(feature) 
+                features.forEach(function(feature)
                 {
                     var marker = new google.maps.Marker({
                         position: feature.position,
@@ -186,7 +188,7 @@ if (!empty($_GET['id'])) {
                         map: map
                       });
                 });
-/*                
+/*
                 var features = [
                   {
                     position: new google.maps.LatLng(22.2776447, 114.1653936),
@@ -209,7 +211,7 @@ if (!empty($_GET['id'])) {
 
                   }
                 ];
-                
+
                 // Create markers.
                 features.forEach(function(feature) {
 
