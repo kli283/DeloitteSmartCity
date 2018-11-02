@@ -111,6 +111,11 @@ if (!empty($_GET['id'])) {
             </form>
 
         </div>
+
+        <?php
+        if (!empty($name)) {
+        ?>
+
         <h1>Name: <?php echo $name ?> </h1>
         <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
@@ -166,5 +171,17 @@ if (!empty($_GET['id'])) {
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
         </script>
+
+        <?php
+      } else {
+        if ($searched == true) {
+         ?>
+         <p>Sorry! Your search did not come up with any results. Please try again! </p>
+
+         <?php
+       }
+       }
+       ?>
+
   </body>
 </html>
