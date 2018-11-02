@@ -123,7 +123,6 @@ if (!empty($_GET['id'])) {
         <?php
         if (!empty($name)) {
         ?>
-
         <h1 class="text_label">Name: <?php echo $name ?> </h1>
         <h1 class="text_label">ID: <?php echo $id?> </h1>
         <div id="map"></div>
@@ -161,14 +160,15 @@ if (!empty($_GET['id'])) {
             </div>
         </div>
 
+	<?php echo $latitude; ?> <?php echo $longitude;?>	
+
         <script>
             function initMap()
             {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
                   zoom: 16,
-//                  center: {lat: -33, lng: 151},
-                    center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>),
+                  center: new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
                 });
@@ -180,7 +180,7 @@ if (!empty($_GET['id'])) {
                        foreach($allStores as $store)
                        {
                             if($store['category'] == $category)
-                                echo 'features.append({position: new google.maps.LatLng(' .$store['latitude'].',' .$store['longitude'].')})';
+                                echo 'features.append({position: new google.maps.LatLng('$store['latitude'].',' .$store['longitude'].')})';
                        }
                     }
                 ?>
