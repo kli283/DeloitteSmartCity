@@ -36,6 +36,7 @@ $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE 
 ?>
 
 
+
 <!doctype html>
   <html>
     <head>
