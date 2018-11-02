@@ -48,7 +48,9 @@ if (empty($_GET['id'])) {
 
     <body>
           <h3>TekChange</h3>
-          <h3>ID: &nbsp <?php echo $chekpoint_id?> </h3> 
+          <h3>Name: &nbsp <?php echo $name ?> </h3> 
+          <h3>ID: &nbsp <?php echo $chekpoint_id?> </h3>
+
         <!--The div element for the map -->
         <div id="map"></div>
         <b>Mode of Travel: </b>
