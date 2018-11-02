@@ -127,6 +127,15 @@ if (!empty($_GET['id'])) {
                        <option value='3' id='three'>shopping</option>
                        <option value='4'id='four'>banks</option>
                     </select>
+
+            <br></br>
+            <b id="mode2">Mode of Travel: </b>
+
+            <select id="mode">
+              <option value="WALKING">Walking</option>
+              <option value="DRIVING">Driving</option>
+            </select>
+
                     <!--<button type="submit" name="id" value= <#?php echo $id?>>Submit</button><br> <br> -->
 
             <div class="listing">
@@ -202,6 +211,202 @@ if (!empty($_GET['id'])) {
        }
        }
        ?>
+
+       <script type="text/javascript">
+
+       function updateValue(value)
+           {
+            if(value == 1){
+              document.getElementById("mode").style.visibility = "hidden";
+              document.getElementById("mode2").style.visibility = "hidden";
+                map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 18,
+                  center: new google.maps.LatLng(22.2780691, 114.16490905),
+                  mapTypeId: 'roadmap'
+                });
+
+                var features = [
+                  {
+                    position: new google.maps.LatLng(22.2776447, 114.1653936),
+                    title: 'Uluru (Ayers Rock)',
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2783696, 114.16440903),
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2781890, 114.16430901),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2784692, 114.16410900),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2782697, 114.16450917),
+                    contentInfo: "THIs IS SHIT"
+
+                  }
+                ];
+
+                // Create markers.
+                features.forEach(function(feature) {
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: feature.contentInfo
+                });
+
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    //icon: icons[feature.type].icon,
+                    map: map
+                  });
+                  marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                  });
+                });
+            }else if(value == 2){
+               document.getElementById("mode").style.visibility = "visible";
+               document.getElementById("mode2").style.visibility = "visible";
+
+                var directionsDisplay = new google.maps.DirectionsRenderer;
+                var directionsService = new google.maps.DirectionsService;
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 14,
+                  center: {lat: 37.77, lng: -122.447},
+                  disableDefaultUI: true
+                });
+                directionsDisplay.setMap(map);
+
+                calculateAndDisplayRoute(directionsService, directionsDisplay);
+                document.getElementById('mode').addEventListener('change', function() {
+                  calculateAndDisplayRoute(directionsService, directionsDisplay);
+                });
+
+
+                function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                var selectedMode = document.getElementById('mode').value;
+                directionsService.route({
+                  origin: {lat: 22.2780691, lng: 114.16490905},  // Haight.
+                  destination: {lat: 22.27851332, lng: 114.16481472},  // Ocean Beach.
+                  // Note that Javascript allows us to access the constant
+                  // using square brackets and a string value as its
+                  // "property."
+                  travelMode: google.maps.TravelMode[selectedMode]
+                }, function(response, status) {
+                  if (status == 'OK') {
+                    directionsDisplay.setDirections(response);
+                  } else {
+                    window.alert('Directions request failed due to ' + status);
+                  }
+                });
+              }
+            }else if(value == 3){
+              document.getElementById("mode").style.visibility = "hidden";
+              document.getElementById("mode2").style.visibility = "hidden";
+              map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: new google.maps.LatLng(22.2780691, 114.16490905),
+                mapTypeId: 'roadmap'
+              });
+
+              var features = [
+                {
+                  position: new google.maps.LatLng(22.2776447, 114.1653936),
+                  title: 'Uluru (Ayers Rock)',
+                  contentInfo: "THIs IS SHIT"
+                }, {
+                  position: new google.maps.LatLng(22.2783696, 114.16440903),
+                  contentInfo: "THIs IS SHIT"
+                }, {
+                  position: new google.maps.LatLng(22.2781890, 114.16430901),
+                  contentInfo: "THIs IS SHIT"
+
+                }, {
+                  position: new google.maps.LatLng(22.2784692, 114.16410900),
+                  contentInfo: "THIs IS SHIT"
+
+                }, {
+                  position: new google.maps.LatLng(22.2782697, 114.16450917),
+                  contentInfo: "THIs IS SHIT"
+
+                }
+              ];
+
+              // Create markers.
+              features.forEach(function(feature) {
+
+              var infowindow = new google.maps.InfoWindow({
+                content: feature.contentInfo
+              });
+
+                var marker = new google.maps.Marker({
+                  position: feature.position,
+                  //icon: icons[feature.type].icon,
+                  map: map
+                });
+                marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                });
+              });
+
+            }else if(value == 4){
+              document.getElementById("mode").style.visibility = "hidden";
+              document.getElementById("mode2").style.visibility = "hidden";
+              map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: new google.maps.LatLng(22.2780691, 114.16490905),
+                mapTypeId: 'roadmap'
+              });
+
+              var features = [
+                {
+                  position: new google.maps.LatLng(22.2776447, 114.1653936),
+                  title: 'Uluru (Ayers Rock)',
+                  contentInfo: "THIs IS SHIT"
+                }, {
+                  position: new google.maps.LatLng(22.2783696, 114.16440903),
+                  contentInfo: "THIs IS SHIT"
+                }, {
+                  position: new google.maps.LatLng(22.2781890, 114.16430901),
+                  contentInfo: "THIs IS SHIT"
+
+                }, {
+                  position: new google.maps.LatLng(22.2784692, 114.16410900),
+                  contentInfo: "THIs IS SHIT"
+
+                }, {
+                  position: new google.maps.LatLng(22.2782697, 114.16450917),
+                  contentInfo: "THIs IS SHIT"
+
+                }
+              ];
+
+              // Create markers.
+              features.forEach(function(feature) {
+
+              var infowindow = new google.maps.InfoWindow({
+                content: feature.contentInfo
+              });
+
+                var marker = new google.maps.Marker({
+                  position: feature.position,
+                  //icon: icons[feature.type].icon,
+                  map: map
+                });
+                marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                });
+              });
+
+            }else {
+              document.getElementById("mode").style.visibility = "hidden";
+              document.getElementById("mode2").style.visibility = "hidden";
+
+          }
+        }
+          updateValue(document.getElementById('lists').value)
+           // set a defalt value
+       </script>
 
        <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR8YK6VN7gr_t3DH6ywMiC0sejSzb3Lyc&callback=initMap">
