@@ -1,6 +1,7 @@
 <?php
-
+	$searched = false; 
 if (!empty($_GET['id'])) {
+	$searched = true; 
     if (is_numeric($_GET['id'])) {
 
         $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
@@ -11,14 +12,13 @@ if (!empty($_GET['id'])) {
         }
 
         $chekpoint_id = $_GET['id'];
-        $id = $checkpoint_id;
+        $id = $chekpoint_id;
 
         $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
           if(!$stmt){
             printf("Query Prep Failed: %s\n", $mysqli->error);
             exit();
           }
-        $searched = true;
         $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
@@ -40,7 +40,6 @@ if (!empty($_GET['id'])) {
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit();
               }
-              $searched = true;
               $stmt->bind_param("s", $chekpoint_name);
               $stmt->execute();
               $stmt->bind_result($name, $id, $latitude, $longitude);
@@ -50,7 +49,24 @@ if (!empty($_GET['id'])) {
     }
 
     if (!empty($_GET['category'])){
-            $category = $_POST['category'];
+            $category = $_GET['category'];
+	    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?"); 
+	    if (!$stmt) {
+		printf("Query Prep failed: %s\n", $mysqli->error); 
+		exit(); 
+	    } 
+	    $stmt->bind_param("s", $checkpoint_name); 
+	    $stmt->execute(); 
+	    $stmt->bind_result($store_name, $store_lat, $store_long); 
+	    $stores = array();
+	    $i = 0;
+	    while ($stmt->fetch()) { 
+		$stores[$i]['name'] = $store_name;
+		$stores[$i]['latitude'] = $store_lat; 
+		$stores[$i]['longitude'] = $store_long;
+		$i++; 
+	    } 
+
         }
   }
     ?>
