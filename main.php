@@ -1,47 +1,38 @@
 <?php
 
 if (empty($_GET['id'])) {
-  die("No ID specified");
-}
+  //don't do anything
+  //echo("No ID specified");
+} else {
+    $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
-$mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
-
-if($mysqli->connect_errno) {
-	printf("Connection Failed: %s\n", $mysqli->connect_error);
-	exit;
-}
-
-$chekpoint_id = $_GET['id'];
-
-$stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
-    if(!$stmt){
-      printf("Query Prep Failed: %s\n", $mysqli->error);
-      exit();
+    if($mysqli->connect_errno) {
+    	printf("Connection Failed: %s\n", $mysqli->connect_error);
+    	exit;
     }
 
-    $stmt->bind_param("s", $id);
-    $stmt->execute();
-    $stmt->bind_result($name, $latitude, $longitude);
-    $stmt->fetch();
-    $stmt->close();
+    $chekpoint_id = $_GET['id'];
 
-    $result = [
-      "name" => $name,
-      "latitude" => $latitude,
-      "longitude" => $longitude
-    ];
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
+        if(!$stmt){
+          printf("Query Prep Failed: %s\n", $mysqli->error);
+          exit();
+        }
 
-    echo($result);
-    exit();
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $stmt->bind_result($name, $latitude, $longitude);
+        $stmt->fetch();
+        $stmt->close();
+  }
 ?>
-
 
 
 <!doctype html>
   <html>
     <head>
       <meta charset="UTF-8">
-      <title> Untitled Document </title>
+      <title> <?php $name ?>  </title>
       <style>
       /* Set the size of the div element that contains the map */
       #map {
