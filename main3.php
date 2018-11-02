@@ -154,7 +154,11 @@ if (!empty($_GET['id'])) {
               <?php
                   foreach($allStores as $store)
                   {
-                    echo {position: new google.maps.LatLng($store['latitude'],$store['longitude'])};
+                    if($store['category'] == $category)
+                    {
+                      echo '{position: new google.maps.LatLng('.$store['latitude'].','.$store['longitude'].')}';
+                    }
+
                   }
                ?>
             ];
@@ -421,7 +425,7 @@ if (!empty($_GET['id'])) {
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
        </script>
 
-			
+
 
   </body>
 </html>
