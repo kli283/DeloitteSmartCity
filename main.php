@@ -3,20 +3,20 @@
 if (!empty($_GET['id'])) {
     if (is_numeric($_GET['id'])) {
 
-    $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
+        $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
-    if($mysqli->connect_errno) {
-    	printf("Connection Failed: %s\n", $mysqli->connect_error);
-    	exit;
-    }
-
-    $chekpoint_id = $_GET['id'];
-
-    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
-        if(!$stmt){
-          printf("Query Prep Failed: %s\n", $mysqli->error);
-          exit();
+        if($mysqli->connect_errno) {
+        	printf("Connection Failed: %s\n", $mysqli->connect_error);
+        	exit;
         }
+
+        $chekpoint_id = $_GET['id'];
+
+        $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
+          if(!$stmt){
+            printf("Query Prep Failed: %s\n", $mysqli->error);
+            exit();
+          }
         $searched = true;
         $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
@@ -34,7 +34,7 @@ if (!empty($_GET['id'])) {
             exit;
           }
 
-          $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP '^?'");
+          $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP '?'");
               if(!$stmt){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit();
