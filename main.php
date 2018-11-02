@@ -35,7 +35,7 @@ if (!empty($_GET['id'])) {
             exit;
           }
 
-          $stmt = $mysqli->prepare("SELECT name, id, latitude, longitude FROM chekpoint WHERE name REGEXP ^?");
+          $stmt = $mysqli->prepare("SELECT name, id, latitude, longitude FROM chekpoint WHERE name REGEXP ?");
               if(!$stmt){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit();
