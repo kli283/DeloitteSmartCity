@@ -120,10 +120,9 @@ if (!empty($_GET['id'])) {
         <script>
           var map;
           function initMap() {
-
             map = new google.maps.Map(document.getElementById('map'), {
               zoom: 18,
-              center: new google.maps.LatLng(<?php echo $longitude?>, <?php echo $latitude?>),
+              center: new google.maps.LatLng(<?php echo $latitude?>, <?php echo $longitude?>),
               mapTypeId: 'roadmap'
             });
 
