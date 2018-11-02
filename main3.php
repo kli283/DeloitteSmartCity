@@ -118,7 +118,6 @@ if (!empty($_GET['id'])) {
         <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
         <div class="bottom">
-            <button>Show in Map</button>
 
             <form action="main3.php" method="get" id="categories">
                     <input type="hidden" />
@@ -143,18 +142,55 @@ if (!empty($_GET['id'])) {
         </div>
 
         <script>
-            function initMap()
-            {
-                var map = new google.maps.Map(document.getElementById('map'),
-                {
-                  zoom: 4,
-                  center: {lat: -33, lng: 151},
-                  disableDefaultUI: true
-                });
-            }
-        </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
+          var map;
+          function initMap() {
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 18,
+              center: new google.maps.LatLng(22.2780691, 114.16490905),
+              mapTypeId: 'roadmap'
+            });
+
+            var features = [
+              {
+                position: new google.maps.LatLng(22.2776447, 114.1653936),
+                title: 'Uluru (Ayers Rock)',
+                contentInfo: "THIs IS SHIT"
+              }, {
+                position: new google.maps.LatLng(22.2783696, 114.16440903),
+                contentInfo: "THIs IS SHIT"
+              }, {
+                position: new google.maps.LatLng(22.2781890, 114.16430901),
+                contentInfo: "THIs IS SHIT"
+
+              }, {
+                position: new google.maps.LatLng(22.2784692, 114.16410900),
+                contentInfo: "THIs IS SHIT"
+
+              }, {
+                position: new google.maps.LatLng(22.2782697, 114.16450917),
+                contentInfo: "THIs IS SHIT"
+
+              }
+            ];
+
+            // Create markers.
+            features.forEach(function(feature) {
+
+            var infowindow = new google.maps.InfoWindow({
+              content: feature.contentInfo
+            });
+
+              var marker = new google.maps.Marker({
+                position: feature.position,
+                //icon: icons[feature.type].icon,
+                map: map
+              });
+              marker.addListener('click', function() {
+              infowindow.open(map, marker);
+              });
+            });
+          }
         </script>
 
         <?php
@@ -167,6 +203,10 @@ if (!empty($_GET['id'])) {
        }
        }
        ?>
+
+       <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR8YK6VN7gr_t3DH6ywMiC0sejSzb3Lyc&callback=initMap">
+       </script>
 
   </body>
 </html>
