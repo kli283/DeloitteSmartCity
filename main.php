@@ -18,7 +18,7 @@ if (empty($_GET['id'])) {
           printf("Query Prep Failed: %s\n", $mysqli->error);
           exit();
         }
-        $seen = true;
+        $searched = true;
         $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
@@ -102,10 +102,12 @@ if (empty($_GET['id'])) {
 
         <?php
       } else {
+        if ($searched == true) {
          ?>
-         <p>Sorry! Your search did not come up with any results. Please try again! </p> 
+         <p>Sorry! Your search did not come up with any results. Please try again! </p>
 
          <?php
+       } 
        }
        ?>
 
