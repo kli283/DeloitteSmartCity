@@ -48,40 +48,41 @@ if (!empty($_GET['id'])) {
               $stmt->close();
     }
 
-    if (!empty($_GET['category'])){
-            $category = $_GET['category'];
-	    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?");
-	    if (!$stmt) {
-    		printf("Query Prep failed: %s\n", $mysqli->error);
-    		exit();
-	    }
-	    $stmt->bind_param("s", $category);
-	    $stmt->execute();
-      $stmt->store_result();
-	    $stores = array();
-	    $i = 0;
+    $category = $_GET['category'];
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
+    if (!$stmt)
+    {
+      printf("Query Prep failed: %s\n", $mysqli->error);
+      exit();
+    }
 
-      if ($stmt->num_rows > 0) {
-        $stmt->bind_result($store_name, $store_lat, $store_long);
+    $stmt->bind_param("s", $chekpoint_id);
+    $stmt->execute();
+    $stmt->store_result();
+    $stores = array();
+    $allStores = array();
+    $i = 0;
+        if ($stmt->num_rows > 0)
+        {
+            $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
+            while ($stmt->fetch())
+            {
+                $theta = $store_long - $longitude;
+                $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
+                $dist = acos($dist);
+                $dist = rad2deg($dist);
+                $km = $dist * 60 * 1.1515 * 1.609344;
+                if ($km < 10000)
+                {
+                    $allStores[$i]['name'] = $store_name;
+                    $allStores[$i]['latitude'] = $store_lat;
+                    $allStores[$i]['longitude'] = $store_long;
+                    $allStores[$i]['category'] = $store_category;
+                    $i++;
+                }
 
-
-	    while ($stmt->fetch()) {
-
-        $theta = $store_long - $longitude;
-        $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $km = $dist * 60 * 1.1515 * 1.609344;
-	 if ($km < 20) {
-    		$stores[$i]['name'] = $store_name;
-    		$stores[$i]['latitude'] = $store_lat;
-    		$stores[$i]['longitude'] = $store_long;
-    		$i++;
-  }
-	    }
-
-  }
         }
+    }
   }
     ?>
 
