@@ -57,27 +57,27 @@ if (!empty($_GET['id'])) {
 	    }
 	    $stmt->bind_param("s", $checkpoint_name);
 	    $stmt->execute();
-      $result->store_result();
+      $stmt->store_result();
 	    $stores = array();
 	    $i = 0;
 
-      if ($result->num_rows > 0) {
+      if ($stmt->num_rows > 0) {
         $stmt->bind_result($store_name, $store_lat, $store_long);
 
 
-	    while ($result->fetch()) {
+	    while ($stmt->fetch()) {
 
-        $theta = $store_long - $longitude;
-        $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $km = $dist * 60 * 1.1515 * 1.609344;
-	 if ($km < 10000) {
-		$stores[$i]['name'] = $store_name;
-		$stores[$i]['latitude'] = $store_lat;
-		$stores[$i]['longitude'] = $store_long;
-		$i++;
-  }
+        // $theta = $store_long - $longitude;
+        // $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
+        // $dist = acos($dist);
+        // $dist = rad2deg($dist);
+        // $km = $dist * 60 * 1.1515 * 1.609344;
+	 // if ($km < 10000) {
+    		$stores[$i]['name'] = $store_name;
+    		$stores[$i]['latitude'] = $store_lat;
+    		$stores[$i]['longitude'] = $store_long;
+    		$i++;
+  // }
 	    }
 
   }
