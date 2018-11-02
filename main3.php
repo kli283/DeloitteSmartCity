@@ -425,5 +425,17 @@ if (!empty($_GET['id'])) {
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
        </script>
 
+			 <?php
+		 } else {
+			 if ($searched == true) {
+				?>
+				<p>Sorry! Your search did not come up with any results. Please try again! </p>
+
+				<?php
+			}
+			}
+			?>
+
+
   </body>
 </html>
