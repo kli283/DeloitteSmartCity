@@ -1,7 +1,7 @@
 <?php
-	$searched = false; 
+	$searched = false;
 if (!empty($_GET['id'])) {
-	$searched = true; 
+	$searched = true;
     if (is_numeric($_GET['id'])) {
 
         $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
@@ -50,22 +50,22 @@ if (!empty($_GET['id'])) {
 
     if (!empty($_GET['category'])){
             $category = $_GET['category'];
-	    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?"); 
+	    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?");
 	    if (!$stmt) {
-		printf("Query Prep failed: %s\n", $mysqli->error); 
-		exit(); 
-	    } 
-	    $stmt->bind_param("s", $checkpoint_name); 
-	    $stmt->execute(); 
-	    $stmt->bind_result($store_name, $store_lat, $store_long); 
+		printf("Query Prep failed: %s\n", $mysqli->error);
+		exit();
+	    }
+	    $stmt->bind_param("s", $checkpoint_name);
+	    $stmt->execute();
+	    $stmt->bind_result($store_name, $store_lat, $store_long);
 	    $stores = array();
 	    $i = 0;
-	    while ($stmt->fetch()) { 
+	    while ($stmt->fetch()) {
 		$stores[$i]['name'] = $store_name;
-		$stores[$i]['latitude'] = $store_lat; 
+		$stores[$i]['latitude'] = $store_lat;
 		$stores[$i]['longitude'] = $store_long;
-		$i++; 
-	    } 
+		$i++;
+	    }
 
         }
   }
@@ -121,7 +121,7 @@ if (!empty($_GET['id'])) {
                         <option value="bank">Banks</option>
                         <option value="mtr">MTR</option>
                     </select>
-                    <input class="button" type="submit" name="id" value=<?php echo $id?>> <br> <br>
+                    <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
 
             <div class="listing">
                 <ul>
