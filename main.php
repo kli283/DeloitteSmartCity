@@ -9,9 +9,7 @@ if (empty($_GET['id'])) {
     	exit;
     }
 
-    $chekpoint_id = $_GET['id'];
-
-    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP '?');
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP '?'");
         if(!$stmt){
           printf("Query Prep Failed: %s\n", $mysqli->error);
           exit();
