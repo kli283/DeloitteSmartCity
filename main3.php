@@ -410,7 +410,7 @@ if (!empty($_GET['id'])) {
        </script>
 
        <script async defer
-       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR8YK6VN7gr_t3DH6ywMiC0sejSzb3Lyc&callback=initMap">
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
        </script>
 
   </body>
