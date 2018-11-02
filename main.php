@@ -106,7 +106,6 @@ if (!empty($_GET['id'])) {
     </head>
 
     <body>
-	<h2> <?php echo  print_r($stores); ?> </h2>
         <div class="topnav">
           <img src="img/logo.png" class="logo">
 
