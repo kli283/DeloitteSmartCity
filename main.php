@@ -57,10 +57,16 @@ if (!empty($_GET['id'])) {
 	    }
 	    $stmt->bind_param("s", $checkpoint_name);
 	    $stmt->execute();
-	    $stmt->bind_result($store_name, $store_lat, $store_long);
+      $result->store_result();
 	    $stores = array();
 	    $i = 0;
-	    while ($stmt->fetch()) {
+
+      if ($result->num_rows > 0) {
+        $stmt->bind_result($store_name, $store_lat, $store_long);
+
+
+	    while ($result->fetch()) {
+
         $theta = $store_long - $longitude;
         $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
         $dist = acos($dist);
@@ -73,7 +79,8 @@ if (!empty($_GET['id'])) {
 		$i++;
   }
 	    }
-	
+
+  }
         }
   }
     ?>
