@@ -117,6 +117,9 @@ if (!empty($_GET['id'])) {
         <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
 
+        <h2> <?php echo  print_r($stores); ?> </h2>
+
+
         <script>
           var map;
           function initMap() {
@@ -125,6 +128,8 @@ if (!empty($_GET['id'])) {
               center: new google.maps.LatLng(22.2780691, 114.16490905),
               mapTypeId: 'roadmap'
             });
+
+            alert("<?php echo print_r($stores); ?>");
 
             var features = [
               {
