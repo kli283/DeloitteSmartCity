@@ -4,7 +4,7 @@
 }
 
 .logo {
-  width: 100vw; 
+  width: 100vw;
 
 }
 
@@ -16,4 +16,12 @@
 #categories
 {
     width: 18%;
+}
+
+#mode{
+  visibility: hidden;
+}
+
+#mode2{
+  visibility: hidden;
 }
