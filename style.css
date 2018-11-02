@@ -3,8 +3,9 @@
     text-align: left;
 }
 
-.logo { 
-	width: 100px;
+.logo {
+  width: 100vw; 
+
 }
 
 .bottom
