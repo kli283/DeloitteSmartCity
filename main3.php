@@ -99,7 +99,6 @@ if (!empty($_GET['id'])) {
     </head>
 
     <body>
-
         <div class="topnav">
           <img src="img/logo.png" class="logo">
 
@@ -121,14 +120,14 @@ if (!empty($_GET['id'])) {
 
             <form action="main3.php" method="get" id="categories">
                     <input type="hidden" />
-                    Category: <select id="categories" name='category' >
-                        <option selected disabled>Choose here</option>
-                        <option value="food">Food</option>
-                        <option value="shopping">Shopping</option>
-                        <option value="bank">Banks</option>
-                        <option value="mtr">MTR</option>
+                    Category: <select id='lists' onchange="updateValue(this.value)">
+                      <option value="defaultSelect">- SELECT -</option>
+                       <option value='1' id='one'>food</option>
+                       <option value='2' id='two'>mtr</option>
+                       <option value='3' id='three'>shopping</option>
+                       <option value='4'id='four'>banks</option>
                     </select>
-                    <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
+                    <!--<button type="submit" name="id" value= <#?php echo $id?>>Submit</button><br> <br> -->
 
             <div class="listing">
                 <ul>
