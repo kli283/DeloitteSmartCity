@@ -94,7 +94,7 @@ if (empty($_GET['id'])) {
         <div id="map"></div>
         <div class="bottom">
             <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
-              <form action="#" method="post">
+              <form action="#" method="get">
                   <select id="categories">
                       <option value="defaultSelect">- SELECT -</option>
                       <option value="food">Food</option>
