@@ -1,89 +1,69 @@
 <?php
-	$searched = false;
-if (!empty($_GET['id'])) {
-	$searched = true;
-    if (is_numeric($_GET['id'])) {
 
-        $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
+if (empty($_GET['id'])) {
+  //don't do anything
+  //echo("No ID specified");
+} else {
+    $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
-        if($mysqli->connect_errno) {
-        	printf("Connection Failed: %s\n", $mysqli->connect_error);
-        	exit;
+    if($mysqli->connect_errno) {
+    	printf("Connection Failed: %s\n", $mysqli->connect_error);
+    	exit;
+    }
+
+    $chekpoint_id = $_GET['id'];
+    $id = $chekpoint_id;
+    
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
+        if(!$stmt){
+          printf("Query Prep Failed: %s\n", $mysqli->error);
+          exit();
         }
-
-        $chekpoint_id = $_GET['id'];
-        $id = $chekpoint_id;
-
-        $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
-          if(!$stmt){
-            printf("Query Prep Failed: %s\n", $mysqli->error);
-            exit();
-          }
         $stmt->bind_param("s", $chekpoint_id);
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
 
         $stmt->fetch();
         $stmt->close();
-      } else {
-          $chekpoint_name = $_GET['id'];
-
-          $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
-
-          if($mysqli->connect_errno) {
-            printf("Connection Failed: %s\n", $mysqli->connect_error);
-            exit;
-          }
-
-          $stmt = $mysqli->prepare("SELECT name, id, latitude, longitude FROM chekpoint WHERE name REGEXP ?");
-              if(!$stmt){
-                printf("Query Prep Failed: %s\n", $mysqli->error);
-                exit();
-              }
-              $stmt->bind_param("s", $chekpoint_name);
-              $stmt->execute();
-              $stmt->bind_result($name, $id, $latitude, $longitude);
-
-              $stmt->fetch();
-              $stmt->close();
-    }
-
-    if (!empty($_GET['category'])){
-            $category = $_GET['category'];
-	    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?");
-	    if (!$stmt) {
-    		printf("Query Prep failed: %s\n", $mysqli->error);
-    		exit();
-	    }
-	    $stmt->bind_param("s", $category);
-	    $stmt->execute();
-      $stmt->store_result();
-	    $stores = array();
-	    $i = 0;
-
-      if ($stmt->num_rows > 0) {
-        $stmt->bind_result($store_name, $store_lat, $store_long);
 
 
-	    while ($stmt->fetch()) {
+        $category = $_GET['category'];
+        $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
+        if (!$stmt)
+        {
+          printf("Query Prep failed: %s\n", $mysqli->error);
+          exit();
+        }
 
-        $theta = $store_long - $longitude;
-        $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $km = $dist * 60 * 1.1515 * 1.609344;
-	 if ($km < 20) {
-    		$stores[$i]['name'] = $store_name;
-    		$stores[$i]['latitude'] = $store_lat;
-    		$stores[$i]['longitude'] = $store_long;
-    		$i++;
-  }
-	    }
+        $stmt->bind_param("s", $chekpoint_id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stores = array();
+        $allStores = array();
+        $i = 0;
+            if ($stmt->num_rows > 0)
+            {
+                $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
+                while ($stmt->fetch())
+                {
+                    $theta = $store_long - $longitude;
+                    $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
+                    $dist = acos($dist);
+                    $dist = rad2deg($dist);
+                    $km = $dist * 60 * 1.1515 * 1.609344;
+                    if ($km < 10000)
+                    {
+                        $allStores[$i]['name'] = $store_name;
+                        $allStores[$i]['latitude'] = $store_lat;
+                        $allStores[$i]['longitude'] = $store_long;
+                        $allStores[$i]['category'] = $store_category;
+                        $i++;
+                    }
 
-  }
+            }
         }
   }
-    ?>
+?>
 
 
 <!DOCTYPE html>
