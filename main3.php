@@ -404,7 +404,7 @@ if (!empty($_GET['id'])) {
 
           }
         }
-          updateValue(document.getElementById('lists').value)
+          //updateValue(document.getElementById('lists').value)
            // set a defalt value
        </script>
 
