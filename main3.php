@@ -122,13 +122,11 @@ if (!empty($_GET['id'])) {
           function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
               zoom: 18,
-              center: new google.maps.LatLng(22.2780691, 114.16490905),
+              //center: new google.maps.LatLng(22.2780691, 114.16490905),
+              center: new google.maps.LatLng(alert("<?php echo $latitude ?>"), alert("<?php echo $longitude ?>")),
               mapTypeId: 'roadmap'
             });
 
-            alert(<?php echo "hello"; ?>);
-            alert(<?php echo print_r($stores); ?>);
-            alert(<?php echo $stores; ?>);
 
             var features = [
               {
