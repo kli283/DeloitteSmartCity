@@ -24,6 +24,11 @@ body {
 }
 
 .modern_button {
+<<<<<<< HEAD
+  background-color:#cce6ff;
+	border:none;
+	display:inline-block;
+=======
   background-color:#00BFFF;
 	display; inline-block;
 	border:1px solid #18ab29;
@@ -31,6 +36,9 @@ body {
 	color: black;
 	font-family:Arial;
 	font-size: 1.5em;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+    height:7%;
 	padding:.27em 31px;
 	text-decoration:none;
 }
@@ -74,4 +82,40 @@ li {
 
 #mode2{
   visibility: hidden;
+}
+
+#searchBox
+{
+    height:7%;
+}
+
+li 
+{
+    list-style-type: none;
+}
+
+li { background: white; }
+li:nth-child(odd) { background: #e6f2ff; }
+
+#searchForm
+{
+    float: right;
+}
+
+#mapButton
+{
+    height:5%;
+    width: 150px;
+    border-radius: 10px;
+    padding: 0px;
+}
+
+#categories
+{
+    width:125px;
+}
+
+.listing
+{
+    width: 80%;
 }

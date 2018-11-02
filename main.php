@@ -49,7 +49,7 @@ if (!empty($_GET['id'])) {
     }
 
     if (!empty($_GET['category']))
-    {       
+    {
         $category = $_GET['category'];
     }
     $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
@@ -163,6 +163,9 @@ if (!empty($_GET['id'])) {
 	<?php echo $latitude; ?> <?php echo $longitude;?>	
 
         <script>
+            var stores_arr = <?php echo json_encode($allStores );?>;
+            console.log(stores_arr); 
+
             function initMap()
             {
                 var map = new google.maps.Map(document.getElementById('map'),

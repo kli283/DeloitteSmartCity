@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title> </title>
+        <style>
+            /* Set the size of the div element that contains the map */
+            #map
+            {
+                height: 400px;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
+        </style>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    </head>
+
+    <body>
+        <div class="topnav">
+          <img src="img/logo.png" class="logo"> <br></br>
+
+          <form id="searchForm" action="" method="get">
+             <input id="searchBox" name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
+              <input class="modern_button " type="submit">
+          </form>
+
+        </div>
+
+        <h1 class="text_label">Deloitte  </h1>
+        <h3 class="text_label">ID: 72191 </h1>
+        <div id="map"></div>
+
+        <br></br>
+        <div class="bottom">
+            <button id="mapButton" class="modern_button">Show in Map</button>
+
+            <form action="" method="get" id="categories">
+                    <input type="hidden" />
+                    Category: <select id="categories" name='category' >
+                        <option >Choose here</option>
+                        <option value="food">Food</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bank">Banks</option>
+                        <option value="mtr">MTR</option>
+                    </select>
+                    <button type="submit" name="id" value=>Submit</button><br> <br>
+              </form>
+
+            <div class="listing">
+                <ul>
+                    <li>Kate Spade</li>
+                    <li>Burberry</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            function initMap()
+            {
+                var map = new google.maps.Map(document.getElementById('map'),
+                {
+                  zoom: 16,
+//                  center: {lat: -33, lng: 151},
+                    center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>),
+                  disableDefaultUI: true,
+                    mapTypeId: 'roadmap'
+                });
+
+                var features = [];
+                <?php
+                    if (!empty($_GET['category']))
+                    {
+                       foreach($allStores as $store)
+                       {
+                            if($store['category'] == $category)
+                                echo 'features.append({position: new google.maps.LatLng(' .$store['latitude'].',' .$store['longitude'].')})';
+                       }
+                    }
+                ?>
+
+                // Create markers.
+                features.forEach(function(feature)
+                {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        //icon: icons[feature.type].icon,
+                        map: map
+                      });
+                });
+/*
+                var features = [
+                  {
+                    position: new google.maps.LatLng(22.2776447, 114.1653936),
+                    title: 'Uluru (Ayers Rock)',
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2783696, 114.16440903),
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2781890, 114.16430901),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2784692, 114.16410900),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2782697, 114.16450917),
+                    contentInfo: "THIs IS SHIT"
+
+                  }
+                ];
+
+                // Create markers.
+                features.forEach(function(feature) {
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: feature.contentInfo
+                });
+
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    //icon: icons[feature.type].icon,
+                    map: map
+                  });
+                  marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                  });
+                });
+*/
+            }
+        </script>
+        <script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
+        </script>
+
+
+  </body>
+</html>
