@@ -116,38 +116,6 @@ if (!empty($_GET['id'])) {
         <h1>Name: <?php echo $name ?> </h1>
         <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
-        <div class="bottom">
-
-            <form action="main3.php" method="get" id="categories">
-                    <input type="hidden" />
-                    Category: <select id='lists' onchange="updateValue(this.value)">
-                      <option value="defaultSelect">- SELECT -</option>
-                       <option value='1' id='one'>food</option>
-                       <option value='2' id='two'>mtr</option>
-                       <option value='3' id='three'>shopping</option>
-                       <option value='4'id='four'>banks</option>
-                    </select>
-
-            <br></br>
-            <b id="mode2">Mode of Travel: </b>
-
-            <select id="mode">
-              <option value="WALKING">Walking</option>
-              <option value="DRIVING">Driving</option>
-            </select>
-
-                    <!--<button type="submit" name="id" value= <#?php echo $id?>>Submit</button><br> <br> -->
-
-            <div class="listing">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-        </div>
 
         <script>
           var map;
@@ -155,7 +123,7 @@ if (!empty($_GET['id'])) {
 
             map = new google.maps.Map(document.getElementById('map'), {
               zoom: 18,
-              center: new google.maps.LatLng(22.2780691, 114.16490905),
+              center: new google.maps.LatLng(<?php echo $longitude?>, <?php echo $latitude?>),
               mapTypeId: 'roadmap'
             });
 
@@ -200,6 +168,40 @@ if (!empty($_GET['id'])) {
             });
           }
         </script>
+        <div class="bottom">
+
+            <form action="main3.php" method="get" id="categories">
+                    <input type="hidden" />
+                    Category: <select id='lists' onchange="updateValue(this.value)">
+                      <option value="defaultSelect">- SELECT -</option>
+                       <option value='1' id='one'>food</option>
+                       <option value='2' id='two'>mtr</option>
+                       <option value='3' id='three'>shopping</option>
+                       <option value='4'id='four'>banks</option>
+                    </select>
+
+            <br></br>
+            <b id="mode2">Mode of Travel: </b>
+
+            <select id="mode">
+              <option value="WALKING">Walking</option>
+              <option value="DRIVING">Driving</option>
+            </select>
+
+                    <!--<button type="submit" name="id" value= <#?php echo $id?>>Submit</button><br> <br> -->
+
+            <div class="listing">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+
+
 
         <?php
       } else {
