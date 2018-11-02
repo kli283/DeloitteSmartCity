@@ -24,18 +24,19 @@ if (empty($_GET['id'])) {
 
         $stmt->fetch();
         $stmt->close();
+ 
     
         if (!empty($_GET['category']))
         {
             $category = $_GET['category'];
-            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations");
+            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
             if (!$stmt) 
             {
                 printf("Query Prep failed: %s\n", $mysqli->error);
                 exit();
             }
             
-            $stmt->bind_param("s", $category);
+            $stmt->bind_param("s", $chekpoint_id);
             $stmt->execute();
             $stmt->store_result();
             $stores = array();
@@ -53,16 +54,11 @@ if (empty($_GET['id'])) {
                     $km = $dist * 60 * 1.1515 * 1.609344;
                     if ($km < 10000) 
                     {
-                        $allStores[$j]['name'] = $store_name;
-                        $allStores[$j]['latitude'] = $store_lat;
-                        $allStores[$j]['longitude'] = $store_long;
-                        $j++;
-                        if ($store_category == $category) { 
-                            $stores[$i]['name'] = $store_name;
-                            $stores[$i]['latitude'] = $store_lat;
-                            $stores[$i]['longitude'] = $store_long;
-                            $i++;
-                        }
+                        $allStores[$i]['name'] = $store_name;
+                        $allStores[$i]['latitude'] = $store_lat;
+                        $allStores[$i]['longitude'] = $store_long;
+                        $allStores[$i]['category'] = $store_category;
+                        $i++;
                     }
 	           }
             }
@@ -111,9 +107,18 @@ if (empty($_GET['id'])) {
             </form>
                         
             <div class="listing">
-                <h1> <?php echo $i ?> </h1>
                 <ul>
-                    
+                    <?php
+                        if (!empty($_GET['category']))
+                        {
+                           foreach($allStores as $store)
+                           {
+                                if($store['category'] == $category)
+                                    echo '<li>' .$store['name']. '</li>';
+                           } 
+                        }
+                        
+                    ?>
                 </ul>
             </div>
         </div>
