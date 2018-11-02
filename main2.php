@@ -24,7 +24,46 @@ if (empty($_GET['id'])) {
 
         $stmt->fetch();
         $stmt->close();
-}
+
+
+        if (!empty($_GET['category']))
+        {
+            $category = $_GET['category'];
+            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
+            if (!$stmt)
+            {
+                printf("Query Prep failed: %s\n", $mysqli->error);
+                exit();
+            }
+
+            $stmt->bind_param("s", $chekpoint_id);
+            $stmt->execute();
+            $stmt->store_result();
+            $stores = array();
+            $allStores = array();
+            $i = 0;
+            if ($stmt->num_rows > 0)
+            {
+                $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
+                while ($stmt->fetch())
+                {
+                    $theta = $store_long - $longitude;
+                    $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
+                    $dist = acos($dist);
+                    $dist = rad2deg($dist);
+                    $km = $dist * 60 * 1.1515 * 1.609344;
+                    if ($km < 10000)
+                    {
+                        $allStores[$i]['name'] = $store_name;
+                        $allStores[$i]['latitude'] = $store_lat;
+                        $allStores[$i]['longitude'] = $store_long;
+                        $allStores[$i]['category'] = $store_category;
+                        $i++;
+                    }
+	           }
+            }
+        }
+  }
 ?>
 
 
@@ -34,7 +73,7 @@ if (empty($_GET['id'])) {
         <title> <?php echo $name ?> </title>
         <style>
             /* Set the size of the div element that contains the map */
-            #map 
+            #map
             {
                 height: 400px;  /* The height is 400 pixels */
                 width: 100%;  /* The width is the width of the web page */
@@ -43,20 +82,20 @@ if (empty($_GET['id'])) {
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    
+
     <body>
         <div class="topnav">
             <form action="main2.php" method="get">
                 <input type="text" placeholder="Type in ID">
                 <input type="submit"><i class="fa fa-search"></i>
             </form>
-            
+
         </div>
         <h1>Name: <?php echo $name ?> </h1>
         <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
         <div class="bottom">
-            <button>Show in Map</button>
+            <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '">' ?> Show in Map</button>
             <form action="#" method="post">
                 <select id="categories">
                     <option value="defaultSelect">- SELECT -</option>
@@ -66,27 +105,28 @@ if (empty($_GET['id'])) {
                     <option value="mtr">MTR</option>
                 </select>
             </form>
-                        
+
             <div class="listing">
                 <ul>
                     <?php
-                        $query = "select * from locations where category='shopping'";
-                        $st = $mysqli->prepare($query);
-                        $st->execute();
-                        $rows = $st->fetchAll();
-                        foreach($rows as $row)
+                        if (!empty($_GET['category']))
                         {
-                            echo '<li>' .$row->name. '</li>';
+                           foreach($allStores as $store)
+                           {
+                                if($store['category'] == $category)
+                                    echo '<li>' .$store['name']. '</li>';
+                           }
                         }
+
                     ?>
                 </ul>
             </div>
         </div>
-       
+
         <script>
-            function initMap() 
+            function initMap()
             {
-                var map = new google.maps.Map(document.getElementById('map'), 
+                var map = new google.maps.Map(document.getElementById('map'),
                 {
                   zoom: 4,
                   center: {lat: -33, lng: 151},
@@ -95,7 +135,7 @@ if (empty($_GET['id'])) {
             }
         </script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
         </script>
   </body>
 </html>
