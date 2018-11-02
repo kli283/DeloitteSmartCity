@@ -66,15 +66,14 @@ if (!empty($_GET['id'])) {
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $km = $dist * 60 * 1.1515 * 1.609344;
-        if ($km < 100) {
-
+	 if ($km < 10000) {
 		$stores[$i]['name'] = $store_name;
 		$stores[$i]['latitude'] = $store_lat;
 		$stores[$i]['longitude'] = $store_long;
 		$i++;
   }
 	    }
-
+	
         }
   }
     ?>
@@ -99,7 +98,7 @@ if (!empty($_GET['id'])) {
     </head>
 
     <body>
-
+	<h2> <?php echo  print_r($stores); ?> </h2>
         <div class="topnav">
           <img src="img/logo.png" class="logo">
 
