@@ -170,7 +170,6 @@ if (!empty($_GET['id'])) {
         <div class="bottom">
 
             <form action="main3.php" method="get" id="categories">
-                    <input type="hidden" />
                     Category: <select id='lists' onchange="updateValue(this.value)">
                       <option value="defaultSelect">- SELECT -</option>
                        <option value='1' id='one'>food</option>
