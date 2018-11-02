@@ -117,9 +117,6 @@ if (!empty($_GET['id'])) {
         <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
 
-        <h2> <?php echo  print_r($stores); ?> </h2>
-
-
         <script>
           var map;
           function initMap() {
@@ -129,7 +126,9 @@ if (!empty($_GET['id'])) {
               mapTypeId: 'roadmap'
             });
 
-            alert("<?php echo print_r($stores); ?>");
+            alert(<?php echo "hello"; ?>);
+            alert(<?php echo print_r($stores); ?>);
+            alert(<?php echo $stores; ?>);
 
             var features = [
               {
