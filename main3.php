@@ -127,7 +127,7 @@ if (!empty($_GET['id'])) {
               mapTypeId: 'roadmap'
             });
 
-/*            var features = [
+            var features = [
               {
                 position: new google.maps.LatLng(22.2776447, 114.1653936),
                 title: 'Uluru (Ayers Rock)',
@@ -149,8 +149,8 @@ if (!empty($_GET['id'])) {
 
               }
             ];
-*/
-            var features = [
+
+/*            var features = [
               <?php
                   foreach($allStores as $store)
                   {
@@ -161,7 +161,7 @@ if (!empty($_GET['id'])) {
 
                   }
                ?>
-            ];
+            ]; */
             // Create markers.
             features.forEach(function(feature) {
 
