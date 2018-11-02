@@ -177,16 +177,6 @@ if (!empty($_GET['id'])) {
                 });
 
                 var features = [];
-                <?php
-                    if (!empty($_GET['category']))
-                    {
-                       foreach($allStores as $store)
-                       {
-                            if($store['category'] == $category)
-                                echo 'features.append({position: new google.maps.LatLng('$store['latitude'].',' .$store['longitude'].')})';
-                       }
-                    }
-                ?>
 
                 // Create markers.
                 features.forEach(function(feature)
