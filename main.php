@@ -61,10 +61,18 @@ if (!empty($_GET['id'])) {
 	    $stores = array();
 	    $i = 0;
 	    while ($stmt->fetch()) {
+        $theta = $store_long - $longitude;
+        $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $km = $dist * 60 * 1.1515 * 1.609344;
+        if ($km < 100) {
+
 		$stores[$i]['name'] = $store_name;
 		$stores[$i]['latitude'] = $store_lat;
 		$stores[$i]['longitude'] = $store_long;
 		$i++;
+  }
 	    }
 
         }
