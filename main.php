@@ -1,7 +1,29 @@
 <?php
 
 if (empty($_GET['id'])) {
+  if (!empty($_GET['name'])) {
+    $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
+    if($mysqli->connect_errno) {
+    	printf("Connection Failed: %s\n", $mysqli->connect_error);
+    	exit;
+    }
+
+    $chekpoint_id = $_GET['id'];
+
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP '?');
+        if(!$stmt){
+          printf("Query Prep Failed: %s\n", $mysqli->error);
+          exit();
+        }
+        $searched = true;
+        $stmt->bind_param("s", $_GET['name']);
+        $stmt->execute();
+        $stmt->bind_result($name, $latitude, $longitude);
+
+        $stmt->fetch();
+        $stmt->close();
+  }
 
 } else {
     $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
@@ -107,7 +129,7 @@ if (empty($_GET['id'])) {
          <p>Sorry! Your search did not come up with any results. Please try again! </p>
 
          <?php
-       } 
+       }
        }
        ?>
 
