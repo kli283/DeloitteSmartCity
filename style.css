@@ -24,8 +24,7 @@ body {
 }
 
 .modern_button {
-  width: 6vw;
-  height: 3em;
+  height: 2.5em;
   background-color:#0080ff;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
@@ -33,7 +32,7 @@ body {
 	border:1px solid #18ab29;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color: black;
 	font-family:Arial;
 	font-size:17px;
 	padding:16px 31px;
