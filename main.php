@@ -4,7 +4,6 @@ if (empty($_GET['id'])) {
   //don't do anything
   //echo("No ID specified");
 } else {
-    die("YES");
     $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
 
     if($mysqli->connect_errno) {
@@ -33,7 +32,7 @@ if (empty($_GET['id'])) {
   <html>
     <head>
       <meta charset="UTF-8">
-      <title> <?php $name ?>  </title>
+      <title> <?php echo $name ?>  </title>
       <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -49,6 +48,7 @@ if (empty($_GET['id'])) {
 
     <body>
           <h3>TekChange</h3>
+          <h3>ID: &nbsp <?php echo $chekpoint_id?> </h3> 
         <!--The div element for the map -->
         <div id="map"></div>
         <b>Mode of Travel: </b>
