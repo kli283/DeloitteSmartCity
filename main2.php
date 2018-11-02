@@ -12,7 +12,8 @@ if (empty($_GET['id'])) {
     }
 
     $chekpoint_id = $_GET['id'];
-
+    $id = $chekpoint_id;
+    
     $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
         if(!$stmt){
           printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -93,16 +94,17 @@ if (empty($_GET['id'])) {
         <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
         <div class="bottom">
-            <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '">' ?> Show in Map</button>
-              <form action="#" method="post">
-                  <select id="categories">
-                      <option value="defaultSelect">- SELECT -</option>
-                      <option value="food">Food</option>
-                      <option value="shopping">Shopping</option>
-                      <option value="bank">Banks</option>
-                      <option value="mtr">MTR</option>
-                  </select>
-                  <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
+            <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+            <form action="main.php" method="get" id="categories">
+                    <input type="hidden" />
+                    Category: <select id="categories" name='category' >
+                        <option selected disabled>Choose here</option>
+                        <option value="food">Food</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bank">Banks</option>
+                        <option value="mtr">MTR</option>
+                    </select>
+                    <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
 
               </form>
 
