@@ -39,7 +39,7 @@ if (empty($_GET['id'])) {
             $stmt->execute();
             $stmt->store_result();
             $stores = array();
-            $GLOBALS['allStores'] = array(); 
+            $allStores = array(); 
             $i = 0;
             if ($stmt->num_rows > 0) 
             {
@@ -53,9 +53,9 @@ if (empty($_GET['id'])) {
                     $km = $dist * 60 * 1.1515 * 1.609344;
                     if ($km < 10000) 
                     {
-                        $GLOBALS['allStores'][$j]['name'] = $store_name;
-                        $GLOBALS['allStores'][$j]['latitude'] = $store_lat;
-                        $GLOBALS['allStores'][$j]['longitude'] = $store_long;
+                        $allStores[$j]['name'] = $store_name;
+                        $allStores[$j]['latitude'] = $store_lat;
+                        $allStores[$j]['longitude'] = $store_long;
                         $j++;
                         if ($store_category == $category) { 
                             $stores[$i]['name'] = $store_name;
@@ -114,9 +114,9 @@ if (empty($_GET['id'])) {
                 <ul>
                     <?php
                         $i = 0;
-                        while($i < 3)
+                        while($i < count($allStores))
                         {
-                            echo '<li>' .$GLOBALS['allStores'][$i]->$name. '</li>';
+                            echo '<li>' $store_name '</li>';
                         }
                     ?> 
                 </ul>
