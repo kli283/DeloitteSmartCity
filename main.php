@@ -219,7 +219,7 @@ if (!empty($_GET['id'])) {
                       position: feature.position,
                       //icon: icons[feature.type].icon,
                       map: map,
-                      label: &hearts
+                      label: ❤
                     });
                   } else {
                     var marker = new google.maps.Marker({
