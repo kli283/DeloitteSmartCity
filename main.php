@@ -75,12 +75,13 @@ if (!empty($_GET['id'])) {
                 $dist = acos($dist);
                 $dist = rad2deg($dist);
                 $km = $dist * 60 * 1.1515 * 1.609344;
-                if ($km < 10000)
+                if ($km < 100000)
                 {
                     $allStores[$i]['name'] = $store_name;
                     $allStores[$i]['latitude'] = $store_lat;
                     $allStores[$i]['longitude'] = $store_long;
                     $allStores[$i]['category'] = $store_category;
+		    $allStores[$i]['km'] = $km;
                     $i++;
                 }
 
@@ -114,7 +115,7 @@ if (!empty($_GET['id'])) {
 
           <form action="main.php" method="get">
              <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
-              <input class="modern_button " type="submit">
+              <input class="modern_button " type="submit" value="Submit to Search">
           </form>
 
         </div>
@@ -129,18 +130,19 @@ if (!empty($_GET['id'])) {
 
         <br></br>
         <div class="bottom">
-            <button class="modern_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
-
+            <button class="modern_button" id="show_map_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+<br></br>
+	<h2 class="text_label">Nearby</h2>
             <form action="main.php" method="get" id="categories">
                     <input type="hidden" />
-                    Category: <select id="categories" name='category' >
-                        <option selected disabled>Choose here</option>
+                    <select class="selector" id="categories" name='category' >
+                        <option selected disabled>Choose Category</option >
                         <option value="food">Food</option>
                         <option value="shopping">Shopping</option>
                         <option value="bank">Banks</option>
                         <option value="mtr">MTR</option>
                     </select>
-                    <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
+                    <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
               </form>
 
             <div class="listing">
@@ -151,7 +153,7 @@ if (!empty($_GET['id'])) {
                            foreach($allStores as $store)
                            {
                                 if($store['category'] == $category)
-                                    echo '<li>' .$store['name']. '</li>';
+                                    echo '<li>' .$store['name']. ': ' . round($store['km'], 2) . ' km'. '</li>';
                            }
                         }
                     ?>
