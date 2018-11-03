@@ -57,22 +57,22 @@ if (empty($_GET['id'])) {
         <div id="map"></div>
         <div class="bottom">
             <button>Show in Map</button>
-            <select id="categories">
-                <option value="defaultSelect">- SELECT -</option>
-                <option value="food">Food</option>
-                <option value="shopping">Shopping</option>
-                <option value="bank">Banks</option>
-                <option value="mtr">MTR</option>
-            </select>
-            
+            <form action="#" method="post">
+                <select id="categories">
+                    <option value="defaultSelect">- SELECT -</option>
+                    <option value="food">Food</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="bank">Banks</option>
+                    <option value="mtr">MTR</option>
+                </select>
+            </form>
+                        
             <div class="listing">
                 <ul>
                     <?php
-                        $query = "SELECT * FROM locations WHERE category='shopping'"
-                        $result = mysql_query($query)
-                        while($row = mysql_fetch_object($result))
+                        foreach($_POST['categories'] as $select)
                         {
-                            echo '<li>' .$row->name. '</li>';
+                            echo '<li>' .$select->name. '</li>';
                         }
                     ?>
                 </ul>
