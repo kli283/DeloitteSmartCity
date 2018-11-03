@@ -88,7 +88,7 @@ if (!empty($_GET['id'])) {
 
               $km = ($angle * $earthRadius)/1000;
 
-                if ($km < 100000)
+                if ($km < 5)
                 {
                     $allStores[$i]['name'] = $store_name;
                     $allStores[$i]['latitude'] = $store_lat;
