@@ -111,12 +111,11 @@ if (empty($_GET['id'])) {
             </form>
                         
             <div class="listing">
-                <ul>
-                    <?php
-                        $i = 0;
-                        echo '<li>' .$category. '</li>';
-                        
+                <?php
+                        echo $category                      
                     ?> 
+                <ul>
+                    
                 </ul>
             </div>
         </div>
