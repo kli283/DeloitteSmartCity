@@ -24,7 +24,7 @@ body {
 }
 
 .modern_button {
-  background-color:#cce6ff;
+  background-color:#99ddff;
 	border:none;
 	display; inline-block;
 	cursor:pointer;
@@ -99,10 +99,15 @@ li:nth-child(odd) { background: #e6f2ff; }
 
 #categories
 {
-    width:125px;
+    width:200px;
 }
 
 .listing
 {
     width: 80%;
+}
+
+#submit_category_button
+{
+    height:7%;
 }
