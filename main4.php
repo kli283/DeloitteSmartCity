@@ -360,7 +360,7 @@ if (!empty($_GET['id'])) {
                 mapTypeId: 'roadmap',
                 disableDefaultUI:true
               });
-
+/*
               var features = [
                 {
                   position: new google.maps.LatLng(22.2776447, 114.1653936),
@@ -383,7 +383,7 @@ if (!empty($_GET['id'])) {
 
                 }
               ];
-
+*/
               // Create markers.
               features.forEach(function(feature) {
 
