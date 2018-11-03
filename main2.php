@@ -95,7 +95,7 @@ if (empty($_GET['id'])) {
         <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
         <div class="bottom">
-            <button><?php echo '<a href="geo:' .$latitude. ',' .$longitude. '" target="_blank">' ?> Show in Map</button>
+            <button><?php echo '<a href="http://maps.google.com/maps?saddr=' .$latitude. ',' .$longitude. '"' ?> Show in Map</button>
             <form action="#" method="post">
                 <select id="categories">
                     <option value="defaultSelect">- SELECT -</option>
