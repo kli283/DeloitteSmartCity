@@ -161,10 +161,10 @@ if (!empty($_GET['id'])) {
             </div>
         </div>
 
-	<?php echo $latitude; ?> <?php echo $longitude;?>
-
         <script>
             var stores_arr = <?php echo json_encode($allStores );?>;
+            var category = <?php echo $category; ?>;
+            console.log(category);
             console.log(stores_arr);
             console.log(stores_arr[0]);
 
