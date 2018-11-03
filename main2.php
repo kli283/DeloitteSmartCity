@@ -116,7 +116,7 @@ if (empty($_GET['id'])) {
                     <?php
                         foreach($allStores as $store)
                         {
-                            echo '<li>' .$store->name. '</li>';
+                            echo '<li>' .$store['name']. '</li>';
                         }
                     ?>
                 </ul>
