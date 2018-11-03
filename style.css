@@ -1,11 +1,26 @@
+body { 
+	color: black !important;
+}
+
+
 .topnav
 {
+	background-color; #0080ff !important;
     text-align: left;
 }
 
 .logo {
+	background-color: #0080ff !important;
   width: 100vw;
+  padding: 3vw 10vw 3vw 10vw;
 
+}
+
+
+.text_input { 
+	margin-left: 5vw;
+	width: 30vw; 
+	height: 3em; 
 }
 
 .bottom
