@@ -199,8 +199,9 @@ if (!empty($_GET['id'])) {
                         map: map
                       });
 
-                    marker.addListener('click', function() {
+                      marker.addListener('click', function() {
                       infowindow.open(map, marker);
+                      });
                 });
 /*
                 var features = [
