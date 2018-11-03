@@ -5,12 +5,12 @@ body {
 
 .topnav
 {
-	background-color; #00BFFF !important;
+	background-color; #99ccff !important;
     text-align: left;
 }
 
 .logo {
-	background-color: #00BFFF !important;
+	background-color: #99ccff !important;
   width: 100vw;
   padding: 3vw 10vw 3vw 10vw;
 
@@ -24,14 +24,9 @@ body {
 }
 
 .modern_button {
-<<<<<<< HEAD
   background-color:#cce6ff;
 	border:none;
-	display:inline-block;
-=======
-  background-color:#00BFFF;
 	display; inline-block;
-	border:1px solid #18ab29;
 	cursor:pointer;
 	color: black;
 	font-family:Arial;
