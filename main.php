@@ -212,23 +212,25 @@ if (!empty($_GET['id'])) {
                 var infowindow = new google.maps.InfoWindow({
                   content: feature.contentInfo
                 });
+                  var marker = null;
 
-                  if (feature.contentInfo == "Your Location") {
+                  if (feature.contentInto == "Your Location") {
                     var marker = new google.maps.Marker({
                       position: feature.position,
                       //icon: icons[feature.type].icon,
                       map: map,
                       label: "O"
-                    };
+                    });
                   } else {
                     var marker = new google.maps.Marker({
                       position: feature.position,
-                    //icon: icons[feature.type].icon,
+                      //icon: icons[feature.type].icon,
                       map: map
+
+                    });
                   }
 
 
-                  });
                   marker.addListener('click', function() {
                   infowindow.open(map, marker);
                   });
