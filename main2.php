@@ -59,12 +59,6 @@ if (empty($_GET['id'])) {
                         $allStores[$i]['longitude'] = $store_long;
                         $allStores[$i]['category'] = $store_category;
                         $i++;
-  /*                      if ($store_category == $category) { 
-                            $stores[$i]['name'] = $store_name;
-                            $stores[$i]['latitude'] = $store_lat;
-                            $stores[$i]['longitude'] = $store_long;
-                            $i++;
-                        }*/
                     }
 	           }
             }
@@ -115,11 +109,15 @@ if (empty($_GET['id'])) {
             <div class="listing">
                 <ul>
                     <?php
-                        foreach($allStores as $store)
+                        if (!empty($_GET['category']))
                         {
-                            if($store['category'] == $category)
-                                echo '<li>' .$store['name']. '</li>';
+                           foreach($allStores as $store)
+                           {
+                                if($store['category'] == $category)
+                                    echo '<li>' .$store['name']. '</li>';
+                           } 
                         }
+                        
                     ?>
                 </ul>
             </div>
