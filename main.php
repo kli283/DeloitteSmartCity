@@ -155,8 +155,13 @@ if (!empty($_GET['id'])) {
                         <option value="bank">Banks</option>
                         <option value="mtr">MTR</option>
                     </select>
+                <button class="modern_button_two" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
               </form>
+<<<<<<< HEAD
             <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
+=======
+            
+>>>>>>> 84435978a3abf0b1bf26d62235a23160f244f678
 
             <div class="listing">
                 <ul>
