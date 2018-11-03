@@ -112,7 +112,7 @@ if (empty($_GET['id'])) {
                         
             <div class="listing">
                 <?php
-                        echo $store_category                      
+                        echo $store_category;                      
                     ?> 
                 <ul>
                     
