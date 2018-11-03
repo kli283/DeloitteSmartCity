@@ -214,7 +214,7 @@ if (!empty($_GET['id'])) {
                 });
                   var marker = null;
 
-                  if (feature.contentInto == "Your Location") {
+                  if (feature.contentInfo == "Your Location") {
                     var marker = new google.maps.Marker({
                       position: feature.position,
                       //icon: icons[feature.type].icon,
