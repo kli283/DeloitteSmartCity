@@ -70,9 +70,13 @@ if (empty($_GET['id'])) {
             <div class="listing">
                 <ul>
                     <?php
-                        foreach($_POST['categories'] as $select)
+                        $query = "select * from locations where category='shopping'";
+                        $st = $mysqli->prepare($query);
+                        $st->execute();
+                        $rows = $st->fetchAll();
+                        foreach($rows as $row)
                         {
-                            echo '<li>' .$select->name. '</li>';
+                            echo '<li>' .$row->name. '</li>';
                         }
                     ?>
                 </ul>
