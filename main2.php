@@ -114,7 +114,7 @@ if (empty($_GET['id'])) {
                 <ul>
                     <?php
                         $i = 0;
-                        while($i < 3))
+                        while($i < 3)
                         {
                             echo '<li>' .$GLOBALS['allStores'][$i][name]. '</li>';
                         }
