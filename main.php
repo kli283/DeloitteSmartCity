@@ -184,8 +184,7 @@ if (!empty($_GET['id'])) {
                     var store = stores_arr[i];
                     var store_data = {
                       "position": new google.maps.LatLng(store.latitude, store.longitude),
-                      "title": store.name,
-                      "contentInfo":""
+                      "contentInfo":store.name
                     };
                     features.push(store_data);
                 }
@@ -203,29 +202,7 @@ if (!empty($_GET['id'])) {
                       infowindow.open(map, marker);
                       });
                 });
-/*
-                var features = [
-                  {
-                    position: new google.maps.LatLng(22.2776447, 114.1653936),
-                    title: 'Uluru (Ayers Rock)',
-                    contentInfo: "THIs IS SHIT"
-                  }, {
-                    position: new google.maps.LatLng(22.2783696, 114.16440903),
-                    contentInfo: "THIs IS SHIT"
-                  }, {
-                    position: new google.maps.LatLng(22.2781890, 114.16430901),
-                    contentInfo: "THIs IS SHIT"
 
-                  }, {
-                    position: new google.maps.LatLng(22.2784692, 114.16410900),
-                    contentInfo: "THIs IS SHIT"
-
-                  }, {
-                    position: new google.maps.LatLng(22.2782697, 114.16450917),
-                    contentInfo: "THIs IS SHIT"
-
-                  }
-                ];
 
                 // Create markers.
                 features.forEach(function(feature) {
@@ -245,6 +222,7 @@ if (!empty($_GET['id'])) {
                 });
 */
             }
+
         </script>
         <script async defer
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
