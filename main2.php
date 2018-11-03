@@ -23,7 +23,7 @@ if (empty($_GET['id'])) {
         $stmt->bind_result($name, $latitude, $longitude);
 
         $stmt->fetch();
-        $stmt->close();
+    //    $stmt->close();
     
         if (!empty($_GET['category']))
         {
@@ -68,13 +68,13 @@ if (empty($_GET['id'])) {
             }
         }
   }
+?>
 
 
-
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title> ' echo $name '</title>
+        <title> <?php echo $name ?> </title>
         <style>
             /* Set the size of the div element that contains the map */
             #map 
@@ -95,8 +95,8 @@ if (empty($_GET['id'])) {
             </form>
             
         </div>
-        <h1>Name: ' echo $name '</h1>
-        <h1>ID: 'echo $chekpoint_id '</h1>
+        <h1>Name: <?php echo $name ?> </h1>
+        <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
         <div class="bottom">
             <button>Show in Map</button>
@@ -111,7 +111,9 @@ if (empty($_GET['id'])) {
             </form>
                         
             <div class="listing">
-                'echo $category ' 
+                <?php
+                        echo $category                      
+                    ?> 
                 <ul>
                     
                 </ul>
@@ -133,5 +135,4 @@ if (empty($_GET['id'])) {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
         </script>
   </body>
-</html>'
-?>
+</html>
