@@ -191,7 +191,7 @@ if (!empty($_GET['id'])) {
                       "position": new google.maps.LatLng(store.latitude, store.longitude),
                       "contentInfo":store.name
                     };
-                    if (<?php echo !empty($_GET("category"); ?> &&  <?php echo $_GET("category"); ?> == store.category) {
+                    if (<?php echo !empty($_GET("category")); ?> &&  <?php echo $_GET("category"); ?> == store.category) {
                       features.push(store_data);
                     }
                 }
