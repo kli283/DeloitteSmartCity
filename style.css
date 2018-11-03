@@ -92,11 +92,6 @@ li
 li { background: white; }
 li:nth-child(odd) { background: #e6f2ff; }
 
-#searchForm
-{
-    float: right;
-}
-
 #categories
 {
     width:200px;
@@ -110,4 +105,10 @@ li:nth-child(odd) { background: #e6f2ff; }
 #submit_category_button
 {
     height:7%;
+    background-color:#99ddff;
+}
+
+#searchID
+{
+    float:right;
 }
