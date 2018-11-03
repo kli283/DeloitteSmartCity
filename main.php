@@ -124,7 +124,7 @@ if (!empty($_GET['id'])) {
 
           <form action="main.php" method="get">
              <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
-              <input class="modern_button " type="submit" value="Submit to Search">
+              <input class="modern_button " type="submit" value="Search">
           </form>
 
         </div>
@@ -188,7 +188,8 @@ if (!empty($_GET['id'])) {
 
                 var own_data = {
                   "position": new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
-                  "contentInfo": "Your Location"
+                  "contentInfo": "Your Location",
+                  "label": "O"
                 };
 
                 features.push(own_data);
