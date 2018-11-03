@@ -114,7 +114,7 @@ if (empty($_GET['id'])) {
                 <ul>
                     <?php
                         $i = 0;
-                        echo '<li>' .$store_name. '</li>';
+                        echo '<li>' .$category. '</li>';
                         
                     ?> 
                 </ul>
