@@ -106,7 +106,7 @@ if (empty($_GET['id'])) {
             <div class="listing">
                 <ul>
                     <?php
-                        echo '<li>' $store_name '</li>';
+                        echo '<li>' .$store_name '</li>';
                     ?>
                 </ul>
             </div>
