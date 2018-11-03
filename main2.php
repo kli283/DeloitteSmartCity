@@ -1,7 +1,37 @@
+<?php
+
+if (empty($_GET['id'])) {
+  //don't do anything
+  //echo("No ID specified");
+} else {
+    $mysqli = new mysqli('localhost', 'root', 'TekChange2018', 'tech_city');
+
+    if($mysqli->connect_errno) {
+    	printf("Connection Failed: %s\n", $mysqli->connect_error);
+    	exit;
+    }
+
+    $chekpoint_id = $_GET['id'];
+
+    $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
+        if(!$stmt){
+          printf("Query Prep Failed: %s\n", $mysqli->error);
+          exit();
+        }
+        $stmt->bind_param("s", $chekpoint_id);
+        $stmt->execute();
+        $stmt->bind_result($name, $latitude, $longitude);
+
+        $stmt->fetch();
+        $stmt->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TekChange</title>
+        <title> <?php echo $name ?> </title>
         <style>
             /* Set the size of the div element that contains the map */
             #map 
@@ -19,7 +49,8 @@
             <input type="text" placeholder="Type in ID">
             <button type="submit"><i class="fa fa-search"></i></button>
         </div>
-        <h1>ID:</h1>
+        <h1>Name: <?php echo $name ?> </h1>
+        <h1>ID: <?php echo $chekpoint_id?> </h1>
         <div id="map"></div>
         <div class="bottom">
             <button>Show in Map</button>
@@ -31,7 +62,7 @@
                 <option value="mtr">MTR</option>
             </select>
             
-            <div class="living">
+            <div class="listing">
                 <ul>
                     <li></li>
                     <li></li>
@@ -57,5 +88,4 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67ZO8RUoSPyKlHm3gF7iAbPKdE00C5sM&callback=initMap">
         </script>
   </body>
->>>>>>> 452e9f0fd2b7e427b6823796980ccf6bf170ec97
 </html>
