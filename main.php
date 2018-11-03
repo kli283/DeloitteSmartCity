@@ -123,7 +123,7 @@ if (!empty($_GET['id'])) {
         <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
         <div class="bottom">
-            <button>Show in Map</button>
+            <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
 
             <form action="main2.php" method="get" id="categories">
                     <input type="hidden" />
@@ -147,14 +147,7 @@ if (!empty($_GET['id'])) {
                                 if($store['category'] == $category)
                                     echo '<li>' .$store['name']. '</li>';
                            }
-                        } else {
-                          foreach($allStores as $store)
-                          {
-                              echo '<li>' .$store['name']. '</li>';
-                          }
-
                         }
-
                     ?>
                 </ul>
             </div>
@@ -167,8 +160,9 @@ if (!empty($_GET['id'])) {
                 {
                   zoom: 4,
 //                  center: {lat: -33, lng: 151},
-                    center: new google.maps.LatLng(22.2780691, 114.16490905),
-                  disableDefaultUI: true
+                    center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>), 
+                  disableDefaultUI: true,
+                    mapTypeId: 'roadmap'
                 });
             }
         </script>
