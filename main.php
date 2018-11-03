@@ -88,7 +88,7 @@ if (!empty($_GET['id'])) {
 
               $km = ($angle * $earthRadius)/1000;
 
-                if ($km < 100000)
+                if ($km < 5)
                 {
                     $allStores[$i]['name'] = $store_name;
                     $allStores[$i]['latitude'] = $store_lat;
@@ -182,7 +182,7 @@ if (!empty($_GET['id'])) {
             {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
-                  zoom: 18,
+                  zoom: 20,
                   center: new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
