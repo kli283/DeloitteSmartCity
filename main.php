@@ -165,9 +165,6 @@ if (!empty($_GET['id'])) {
         <script>
             var stores_arr = <?php echo json_encode($allStores);?>;
             var category = <?php echo json_encode($category); ?>;
-            console.log(category);
-            console.log(stores_arr);
-            console.log(stores_arr[0]);
 
             function initMap()
             {
@@ -196,8 +193,9 @@ if (!empty($_GET['id'])) {
                       "contentInfo":store.name
                     };
 
-
-                    features.push(store_data);
+                    if (category != "") {
+                      features.push(store_data);
+                    }
                 }
 
                 // Create markers.
