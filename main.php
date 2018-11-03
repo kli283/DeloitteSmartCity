@@ -71,7 +71,7 @@ if (!empty($_GET['id'])) {
             $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
             while ($stmt->fetch())
             {
-              $earthRadius = 6371000
+              $earthRadius = 6371000;
               $latFrom = deg2rad($store_lat);
               $lonFrom = deg2rad($store_long);
               $latTo = deg2rad($latitude);
