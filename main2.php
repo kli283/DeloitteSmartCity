@@ -116,7 +116,7 @@ if (empty($_GET['id'])) {
                         $i = 0;
                         while($i < count($stores))
                         {
-                            echo '<li>' .$stores[$i][name]. '</li>'
+                            echo '<li>' .$stores[$i][name]. '</li>';
                         }
                     ?> 
                 </ul>
