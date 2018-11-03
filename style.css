@@ -43,7 +43,7 @@ body {
 	text-decoration:none;
 }
 
-#show_map_button { 
+#show_map_button {
 	margin-left: 5vw;
 }
 
@@ -53,18 +53,18 @@ body {
 }
 
 #categories {
-	margin-left: 2.5vw; 
-	width: 30vw; 
+	margin-left: 2.5vw;
+	width: 30vw;
 	height: 3em;
 	display: inline-block !important;
 	white-space: nowrap !important;
-} 
+}
 
-#submit_category_button { 
+#submit_category_button {
 	margin-left: .4vw;
 }
 
-li { 
+li {
 	font-size: 2em;
 	margin-left: 2.3vw;
 	list-style-type: none;
@@ -89,7 +89,7 @@ li {
     height:7%;
 }
 
-li 
+li
 {
     list-style-type: none;
 }
@@ -100,14 +100,6 @@ li:nth-child(odd) { background: #e6f2ff; }
 #searchForm
 {
     float: right;
-}
-
-#mapButton
-{
-    height:5%;
-    width: 150px;
-    border-radius: 10px;
-    padding: 0px;
 }
 
 #categories
