@@ -189,7 +189,6 @@ if (!empty($_GET['id'])) {
                 var own_data = {
                   "position": new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   "contentInfo": "Your Location",
-                  "label": "O"
                 };
 
                 features.push(own_data);
@@ -213,12 +212,25 @@ if (!empty($_GET['id'])) {
                 var infowindow = new google.maps.InfoWindow({
                   content: feature.contentInfo
                 });
+                  var marker = null;
 
-                  var marker = new google.maps.Marker({
-                    position: feature.position,
-                    //icon: icons[feature.type].icon,
-                    map: map
-                  });
+                  if (feature.contentInto == "Your Location") {
+                    var marker = new google.maps.Marker({
+                      position: feature.position,
+                      //icon: icons[feature.type].icon,
+                      map: map,
+                      label: "O"
+                    });
+                  } else {
+                    var marker = new google.maps.Marker({
+                      position: feature.position,
+                      //icon: icons[feature.type].icon,
+                      map: map
+
+                    });
+                  }
+
+
                   marker.addListener('click', function() {
                   infowindow.open(map, marker);
                   });
