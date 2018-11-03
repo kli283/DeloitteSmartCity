@@ -195,8 +195,6 @@ if (!empty($_GET['id'])) {
                       "contentInfo":store.name
                     };
 
-                    console.log(<?php echo !empty($_GET['category']); ?>);
-                    console.log(<?php echo $_GET['category'] ?>);
 
                     features.push(store_data);
                 }
