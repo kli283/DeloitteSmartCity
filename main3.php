@@ -122,7 +122,8 @@ if (!empty($_GET['id'])) {
           function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
               zoom: 18,
-              center: new google.maps.LatLng(<?php echo $latitude?>, <?php echo $longitude?>),
+              //center: new google.maps.LatLng(22.2780691, 114.16490905),
+              center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>),
               mapTypeId: 'roadmap'
             });
 
@@ -149,6 +150,18 @@ if (!empty($_GET['id'])) {
               }
             ];
 
+/*            var features = [
+              <?php
+                  foreach($allStores as $store)
+                  {
+                    if($store['category'] == $category)
+                    {
+                      echo '{position: new google.maps.LatLng('.$store['latitude'].','.$store['longitude'].')}';
+                    }
+
+                  }
+               ?>
+            ]; */
             // Create markers.
             features.forEach(function(feature) {
 
@@ -170,7 +183,6 @@ if (!empty($_GET['id'])) {
         <div class="bottom">
 
             <form action="main3.php" method="get" id="categories">
-                    <input type="hidden" />
                     Category: <select id='lists' onchange="updateValue(this.value)">
                       <option value="defaultSelect">- SELECT -</option>
                        <option value='1' id='one'>food</option>
@@ -405,13 +417,15 @@ if (!empty($_GET['id'])) {
 
           }
         }
-          updateValue(document.getElementById('lists').value)
+          //updateValue(document.getElementById('lists').value)
            // set a defalt value
        </script>
 
        <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMmxbZxJlswe6IVpF5TsMMGp4nTo8_7W4&callback=initMap">
        </script>
+
+
 
   </body>
 </html>
