@@ -178,15 +178,20 @@ if (!empty($_GET['id'])) {
                 });
 
                 var features = [];
+                // var location_data = { 
+                //   "position": new google.maps.LatLng(store.latitude, store.longitude),
+                //   "title": store.name,
+                //   "contentInfo":""
+                // }
 
-                for (var store in stores_arr) {
-                    store = stores_arr[0];
+                var i = 0;
+                for (i = 0; i < stores_arr.length; i++) {
+                    var store = stores_arr[i];
                     var store_data = {
                       "position": new google.maps.LatLng(store.latitude, store.longitude),
                       "title": store.name,
                       "contentInfo":""
                     };
-
                     features.push(store_data);
                 }
 
