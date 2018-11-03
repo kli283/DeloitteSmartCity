@@ -25,18 +25,18 @@ if (empty($_GET['id'])) {
         $stmt->fetch();
         $stmt->close();
  
-    /*
+    
         if (!empty($_GET['category']))
         {
             $category = $_GET['category'];*/
-            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations");
+            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
             if (!$stmt) 
             {
                 printf("Query Prep failed: %s\n", $mysqli->error);
                 exit();
             }
             
-//            $stmt->bind_param("s", $category);
+            $stmt->bind_param("s", $chekpoint_id);
             $stmt->execute();
             $stmt->store_result();
             $stores = array();
@@ -57,6 +57,7 @@ if (empty($_GET['id'])) {
                         $allStores[$i]['name'] = $store_name;
                         $allStores[$i]['latitude'] = $store_lat;
                         $allStores[$i]['longitude'] = $store_long;
+                        $allStores[$i]['category'] = $store_category;
                         $i++;
   /*                      if ($store_category == $category) { 
                             $stores[$i]['name'] = $store_name;
@@ -67,7 +68,7 @@ if (empty($_GET['id'])) {
                     }
 	           }
             }
- //       }
+        }
   }
 ?>
 
@@ -116,7 +117,8 @@ if (empty($_GET['id'])) {
                     <?php
                         foreach($allStores as $store)
                         {
-                            echo '<li>' .$store['name']. '</li>';
+                            if($store['category'] == $category)
+                                echo '<li>' .$store['name']. '</li>';
                         }
                     ?>
                 </ul>
