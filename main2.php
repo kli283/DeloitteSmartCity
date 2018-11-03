@@ -23,7 +23,7 @@ if (empty($_GET['id'])) {
         $stmt->bind_result($name, $latitude, $longitude);
 
         $stmt->fetch();
-    //    $stmt->close();
+        $stmt->close();
     
         if (!empty($_GET['category']))
         {
