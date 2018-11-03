@@ -102,12 +102,6 @@ li:nth-child(odd) { background: #e6f2ff; }
     width: 80%;
 }
 
-#submit_category_button
-{
-    height:7%;
-    background:#99ddff;
-}
-
 #searchID
 {
     float:right;
