@@ -146,7 +146,7 @@ if (!empty($_GET['id'])) {
 
 <br></br>
 	<h2 class="text_label">Nearby</h2>
-            <form action="main.php" method="get">
+            <form action="main.php" method="get" id="categories">
                     <input type="hidden" />
                     <select class="selector" id="categories" name='category' >
                         <option selected disabled>Choose Category</option >
@@ -155,8 +155,8 @@ if (!empty($_GET['id'])) {
                         <option value="bank">Banks</option>
                         <option value="mtr">MTR</option>
                     </select>
-                    <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
               </form>
+            <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
 
             <div class="listing">
                 <ul>
