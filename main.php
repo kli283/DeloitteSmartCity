@@ -1,6 +1,6 @@
 <?php
 	$searched = false;
-  $category = "n/a";
+  $category = "";
 if (!empty($_GET['id'])) {
 	$searched = true;
     if (is_numeric($_GET['id'])) {
@@ -163,8 +163,8 @@ if (!empty($_GET['id'])) {
         </div>
 
         <script>
-            var stores_arr = <?php echo json_encode($allStores );?>;
-            var category = <?php echo $category; ?>;
+            var stores_arr = <?php echo json_encode($allStores);?>;
+            var category = <?php echo json_encode($category); ?>;
             console.log(category);
             console.log(stores_arr);
             console.log(stores_arr[0]);
