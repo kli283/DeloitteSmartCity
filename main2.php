@@ -112,7 +112,7 @@ if (empty($_GET['id'])) {
                         
             <div class="listing">
                 <?php
-                        echo $allStores;                      
+                        echo $i;                      
                     ?> 
                 <ul>
                     
