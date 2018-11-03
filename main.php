@@ -178,11 +178,6 @@ if (!empty($_GET['id'])) {
                 });
 
                 var features = [];
-                // var location_data = { 
-                //   "position": new google.maps.LatLng(store.latitude, store.longitude),
-                //   "title": store.name,
-                //   "contentInfo":""
-                // }
 
                 var i = 0;
                 for (i = 0; i < stores_arr.length; i++) {
@@ -203,6 +198,9 @@ if (!empty($_GET['id'])) {
                         //icon: icons[feature.type].icon,
                         map: map
                       });
+
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
                 });
 /*
                 var features = [
