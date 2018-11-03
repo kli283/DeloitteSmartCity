@@ -129,7 +129,8 @@ if (!empty($_GET['id'])) {
 
         <br></br>
         <div class="bottom">
-            <button class="modern_button" id="show_map_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+          <button class="modern_button" id="show_map_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+
 <br></br>
 	<h2 class="text_label">Nearby</h2>
             <form action="main.php" method="get" id="categories">
@@ -183,7 +184,7 @@ if (!empty($_GET['id'])) {
                   "position": new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   "contentInfo": "Your Location"
                 };
-                
+
                 features.push(own_data);
 
                 var i = 0;
@@ -194,6 +195,8 @@ if (!empty($_GET['id'])) {
                       "contentInfo":store.name
                     };
 
+                    console.log(<?php echo !empty($_GET['category']); ?>);
+                    console.log(<?php echo $_GET['category'] ?>);
 
                     features.push(store_data);
                 }
