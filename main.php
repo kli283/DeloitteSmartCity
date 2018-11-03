@@ -180,6 +180,7 @@ if (!empty($_GET['id'])) {
                 var features = [];
 
                 for (var store in stores_arr) {
+                    store = stores_arr[0];
                     var store_data = {
                       "position": new google.maps.LatLng(store.latitude, store.longitude),
                       "title": store.name,
