@@ -122,7 +122,7 @@ if (!empty($_GET['id'])) {
         <div class="topnav">
           <img src="img/logo.png" class="logo"> <br></br>
 
-          <form id="searchID" action="main.php" method="get">
+          <form action="main.php" method="get">
              <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
               <input class="modern_button " type="submit" value="Search">
           </form>
@@ -219,7 +219,7 @@ if (!empty($_GET['id'])) {
                       position: feature.position,
                       //icon: icons[feature.type].icon,
                       map: map,
-                      label: K
+                      label: "K"
                     });
                   } else {
                     var marker = new google.maps.Marker({
