@@ -11,6 +11,7 @@ if (!empty($_GET['id'])) {
         }
 
         $chekpoint_id = $_GET['id'];
+        $id = $checkpoint_id;
 
         $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE id=?");
           if(!$stmt){
@@ -34,7 +35,7 @@ if (!empty($_GET['id'])) {
             exit;
           }
 
-          $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM chekpoint WHERE name REGEXP ?");
+          $stmt = $mysqli->prepare("SELECT name, id, latitude, longitude FROM chekpoint WHERE name REGEXP ?");
               if(!$stmt){
                 printf("Query Prep Failed: %s\n", $mysqli->error);
                 exit();
@@ -42,7 +43,7 @@ if (!empty($_GET['id'])) {
               $searched = true;
               $stmt->bind_param("s", $chekpoint_name);
               $stmt->execute();
-              $stmt->bind_result($name, $latitude, $longitude);
+              $stmt->bind_result($name, $id, $latitude, $longitude);
 
               $stmt->fetch();
               $stmt->close();
@@ -65,12 +66,14 @@ if (!empty($_GET['id'])) {
         </style>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     </head>
 
     <body>
 
         <div class="topnav">
-          <h1 class="title">ChekPoint</h1>
+          <img src="img/logo.png" class="logo">
 
           <form action="main.php" method="get">
               Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
@@ -84,7 +87,7 @@ if (!empty($_GET['id'])) {
         ?>
 
         <h1>Name: <?php echo $name ?> </h1>
-        <h1>ID: <?php echo $chekpoint_id?> </h1>
+        <h1>ID: <?php echo $id?> </h1>
         <div id="map"></div>
         <div class="bottom">
             <button>Show in Map</button>
