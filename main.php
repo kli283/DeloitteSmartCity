@@ -109,7 +109,7 @@ if (!empty($_GET['id'])) {
           <img src="img/logo.png" class="logo">
 
           <form action="main.php" method="get">
-              Search: <input name="id" type="text" placeholder="Type in ID"> &nbsp
+              Search: <input name="id" type="text" placeholder="Type in ID or name">
               <input class="button" type="submit">
           </form>
 
@@ -125,7 +125,7 @@ if (!empty($_GET['id'])) {
         <div class="bottom">
             <button><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
 
-            <form action="main2.php" method="get" id="categories">
+            <form action="main.php" method="get" id="categories">
                     <input type="hidden" />
                     Category: <select id="categories" name='category' >
                         <option selected disabled>Choose here</option>
@@ -158,12 +158,65 @@ if (!empty($_GET['id'])) {
             {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
-                  zoom: 4,
+                  zoom: 16,
 //                  center: {lat: -33, lng: 151},
                     center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>), 
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
                 });
+                
+                var features = [];
+                <?php
+                    if (!empty($_GET['category']))
+                    {
+                       foreach($allStores as $store)
+                       {
+                            if($store['category'] == $category)
+                                echo 'features.append({position: new google.maps.LatLng(' .$store['latitude'].',' .$store['longitude'].')})';
+                       }
+                    }
+                ?>
+/*                
+                var features = [
+                  {
+                    position: new google.maps.LatLng(22.2776447, 114.1653936),
+                    title: 'Uluru (Ayers Rock)',
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2783696, 114.16440903),
+                    contentInfo: "THIs IS SHIT"
+                  }, {
+                    position: new google.maps.LatLng(22.2781890, 114.16430901),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2784692, 114.16410900),
+                    contentInfo: "THIs IS SHIT"
+
+                  }, {
+                    position: new google.maps.LatLng(22.2782697, 114.16450917),
+                    contentInfo: "THIs IS SHIT"
+
+                  }
+                ];
+                
+                // Create markers.
+                features.forEach(function(feature) {
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: feature.contentInfo
+                });
+
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    //icon: icons[feature.type].icon,
+                    map: map
+                  });
+                  marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                  });
+                });
+*/
             }
         </script>
         <script async defer
