@@ -179,6 +179,13 @@ if (!empty($_GET['id'])) {
 
                 var features = [];
 
+                var own_data = {
+                  "position": new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
+                  "contentInfo": "Your Location"
+                };
+                
+                features.push(own_data);
+
                 var i = 0;
                 for (i = 0; i < stores_arr.length; i++) {
                     var store = stores_arr[i];
@@ -186,7 +193,7 @@ if (!empty($_GET['id'])) {
                       "position": new google.maps.LatLng(store.latitude, store.longitude),
                       "contentInfo":store.name
                     };
-                    
+
 
                     features.push(store_data);
                 }
