@@ -138,7 +138,7 @@ if (!empty($_GET['id'])) {
 
         <br></br>
         <div class="bottom">
-          <button class="modern_button" id="show_map_button"><?php echo '<a href="http://maps.google.com/maps?q=' .$latitude. ',' .$longitude. '"> </a>' ?> Show in Map</button>
+          <button class="modern_button" id="show_map_button"><a href="http://maps.google.com/maps"> Show in Map </a> </button> 
 
 <br></br>
 	<h2 class="text_label">Nearby</h2>
@@ -178,7 +178,7 @@ if (!empty($_GET['id'])) {
             {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
-                  zoom: 30,
+                  zoom: 25,
                   center: new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
