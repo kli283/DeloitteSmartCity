@@ -24,6 +24,8 @@ if (!empty($_GET['id'])) {
         $stmt->execute();
         $stmt->bind_result($name, $latitude, $longitude);
 
+
+
         $stmt->fetch();
         $stmt->close();
       } else {
@@ -48,6 +50,8 @@ if (!empty($_GET['id'])) {
               $stmt->fetch();
               $stmt->close();
     }
+
+    $url = 'http://maps.google.com/maps?q=' .$latitude. ',' .$longitude;
 
     if (!empty($_GET['category']))
     {
@@ -138,7 +142,7 @@ if (!empty($_GET['id'])) {
 
         <br></br>
         <div class="bottom">
-          <button class="modern_button" id="show_map_button"><a href="http://maps.google.com/maps"> Show in Map </a> </button> 
+          <button class="modern_button" id="show_map_button"><a href=<?php echo $url; ?>> Show in Map </a> </button>
 
 <br></br>
 	<h2 class="text_label">Nearby</h2>
@@ -178,7 +182,7 @@ if (!empty($_GET['id'])) {
             {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
-                  zoom: 25,
+                  zoom: 18,
                   center: new google.maps.LatLng(<?php echo $latitude;  ?>, <?php echo $longitude; ?>),
                   disableDefaultUI: true,
                     mapTypeId: 'roadmap'
