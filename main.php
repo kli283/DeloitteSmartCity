@@ -146,7 +146,7 @@ if (!empty($_GET['id'])) {
 
 <br></br>
 	<h2 class="text_label">Nearby</h2>
-            <form action="main.php" method="get" id="categories">
+            <form action="main.php" method="get">
                     <input type="hidden" />
                     <select class="selector" id="categories" name='category' >
                         <option selected disabled>Choose Category</option >
