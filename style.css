@@ -105,7 +105,7 @@ li:nth-child(odd) { background: #e6f2ff; }
 #submit_category_button
 {
     height:7%;
-    background-color:#99ddff;
+    background:#99ddff;
 }
 
 #searchID
