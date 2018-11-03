@@ -205,7 +205,7 @@ if (!empty($_GET['id'])) {
                   infowindow.open(map, marker);
                   });
                 });
-*/
+
             }
 
         </script>
