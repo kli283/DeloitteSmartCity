@@ -1,6 +1,6 @@
 <?php
 	$searched = false;
-  $category = "";
+  $category = "n/a";
 if (!empty($_GET['id'])) {
 	$searched = true;
     if (is_numeric($_GET['id'])) {
