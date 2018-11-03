@@ -125,7 +125,7 @@ if (!empty($_GET['id'])) {
         <div class="bottom">
             <button>Show in Map</button>
 
-            <form action="main.php" method="get" id="categories">
+            <form action="main2.php" method="get" id="categories">
                     <input type="hidden" />
                     Category: <select id="categories" name='category' >
                         <option selected disabled>Choose here</option>
@@ -135,14 +135,27 @@ if (!empty($_GET['id'])) {
                         <option value="mtr">MTR</option>
                     </select>
                     <button type="submit" name="id" value=<?php echo $id?>>Submit</button><br> <br>
+              </form>
 
             <div class="listing">
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <?php
+                        if (!empty($_GET['category']))
+                        {
+                           foreach($allStores as $store)
+                           {
+                                if($store['category'] == $category)
+                                    echo '<li>' .$store['name']. '</li>';
+                           }
+                        } else {
+                          foreach($allStores as $store)
+                          {
+                              echo '<li>' .$store['name']. '</li>';
+                          }
+
+                        }
+
+                    ?>
                 </ul>
             </div>
         </div>

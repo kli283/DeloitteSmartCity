@@ -190,8 +190,7 @@ if (!empty($_GET['id'])) {
                        <option value='3' id='three'>shopping</option>
                        <option value='4'id='four'>banks</option>
                     </select>
-
-            <br></br>
+            </form>
             <b id="mode2">Mode of Travel: </b>
 
             <select id="mode">
