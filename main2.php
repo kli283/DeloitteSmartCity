@@ -57,7 +57,7 @@ if (empty($_GET['id'])) {
                         $allStores[$i]['name'] = $store_name;
                         $allStores[$i]['latitude'] = $store_lat;
                         $allStores[$i]['longitude'] = $store_long;
-                        $j++;
+                        $i++;
   /*                      if ($store_category == $category) { 
                             $stores[$i]['name'] = $store_name;
                             $stores[$i]['latitude'] = $store_lat;
@@ -112,9 +112,13 @@ if (empty($_GET['id'])) {
             </form>
                         
             <div class="listing">
-                <?php echo '<h1>' .$i. '</h1>' ?>
                 <ul>
-                    
+                    <?php
+                        foreach($allStores as $store)
+                        {
+                            echo '<li>' .$store->name. '</li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
