@@ -106,10 +106,7 @@ if (empty($_GET['id'])) {
             <div class="listing">
                 <ul>
                     <?php
-                        foreach($stores as $store)
-                        {
-                            echo '<li>' .$store->name. '</li>';
-                        }
+                        echo '<li>' $store_name '</li>';
                     ?>
                 </ul>
             </div>
