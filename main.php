@@ -193,7 +193,7 @@ if (!empty($_GET['id'])) {
                       "contentInfo":store.name
                     };
 
-                    if (category != "") {
+                    if (category != "" && category == store.category) {
                       features.push(store_data);
                     }
                 }
