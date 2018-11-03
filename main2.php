@@ -28,7 +28,7 @@ if (empty($_GET['id'])) {
     
         if (!empty($_GET['category']))
         {
-            $category = $_GET['category'];*/
+            $category = $_GET['category'];
             $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations WHERE id=?");
             if (!$stmt) 
             {
