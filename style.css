@@ -24,19 +24,16 @@ body {
 }
 
 .modern_button {
-  background-color:#0080ff;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid #18ab29;
+  background-color:#cce6ff;
+	border:none;
 	display:inline-block;
 	cursor:pointer;
 	color: black;
 	font-family:Arial;
 	font-size: 1.5em;
-	padding:.75 31px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
+    height:7%;
 }
 
 .text_label {
@@ -60,4 +57,40 @@ body {
 
 #mode2{
   visibility: hidden;
+}
+
+#searchBox
+{
+    height:7%;
+}
+
+li 
+{
+    list-style-type: none;
+}
+
+li { background: white; }
+li:nth-child(odd) { background: #e6f2ff; }
+
+#searchForm
+{
+    float: right;
+}
+
+#mapButton
+{
+    height:5%;
+    width: 150px;
+    border-radius: 10px;
+    padding: 0px;
+}
+
+#categories
+{
+    width:125px;
+}
+
+.listing
+{
+    width: 80%;
 }

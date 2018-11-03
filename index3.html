@@ -19,25 +19,25 @@
         <div class="topnav">
           <img src="img/logo.png" class="logo"> <br></br>
 
-          <form action="" method="get">
-             <input name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
+          <form id="searchForm" action="" method="get">
+             <input id="searchBox" name="id" type="text" placeholder="Enter an ID or Name" class="text_input"> &nbsp
               <input class="modern_button " type="submit">
           </form>
 
         </div>
 
-        <h1 class="text_label">Name:  </h1>
-        <h1 class="text_label">ID: </h1>
+        <h1 class="text_label">Deloitte  </h1>
+        <h3 class="text_label">ID: 72191 </h1>
         <div id="map"></div>
 
         <br></br>
         <div class="bottom">
-            <button class="modern_button">Show in Map</button>
+            <button id="mapButton" class="modern_button">Show in Map</button>
 
             <form action="" method="get" id="categories">
                     <input type="hidden" />
                     Category: <select id="categories" name='category' >
-                        <option selected disabled>Choose here</option>
+                        <option >Choose here</option>
                         <option value="food">Food</option>
                         <option value="shopping">Shopping</option>
                         <option value="bank">Banks</option>
