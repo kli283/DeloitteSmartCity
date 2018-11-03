@@ -111,9 +111,7 @@ if (empty($_GET['id'])) {
             </form>
                         
             <div class="listing">
-                <?php
-                        echo $i;                      
-                    ?> 
+                <h1> <?php echo $i ?> </h1>
                 <ul>
                     
                 </ul>
