@@ -88,7 +88,7 @@ if (!empty($_GET['id'])) {
 
               $km = ($angle * $earthRadius)/1000;
 
-                if ($km < 20)
+                if ($km < 100)
                 {
                     $allStores[$i]['name'] = $store_name;
                     $allStores[$i]['latitude'] = $store_lat;
@@ -155,9 +155,8 @@ if (!empty($_GET['id'])) {
                         <option value="bank">Banks</option>
                         <option value="mtr">MTR</option>
                     </select>
-                    <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
-              </form>
-
+            <button class="modern_button" type="submit" name="id" id="submit_category_button" value=<?php echo $id?>>Search by Category</button><br> <br>
+</form>
             <div class="listing">
                 <ul>
                     <?php
