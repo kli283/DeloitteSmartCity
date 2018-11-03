@@ -34,3 +34,5 @@ $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM checkpoint WHERE
     echo($result);
     exit(); 
 ?>
+
+
