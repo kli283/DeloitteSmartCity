@@ -306,10 +306,11 @@ if (!empty($_GET['id'])) {
               document.getElementById("mode2").style.visibility = "hidden";
               map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 18,
-                center: new google.maps.LatLng(22.2780691, 114.16490905),
+//                center: new google.maps.LatLng(22.2780691, 114.16490905),
+                center: new google.maps.LatLng(<?php echo $latitude ?>, <?php echo $longitude ?>), 
                 mapTypeId: 'roadmap'
               });
-
+/*
               var features = [
                 {
                   position: new google.maps.LatLng(22.2776447, 114.1653936),
@@ -332,7 +333,7 @@ if (!empty($_GET['id'])) {
 
                 }
               ];
-
+*/
               // Create markers.
               features.forEach(function(feature) {
 
