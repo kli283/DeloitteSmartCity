@@ -28,7 +28,7 @@ if (empty($_GET['id'])) {
         if (!empty($_GET['category']))
         {
             $category = $_GET['category'];
-            $stmt = $mysqli->prepare("SELECT name, latitude, longitude FROM locations WHERE category=?");
+            $stmt = $mysqli->prepare("SELECT name, latitude, longitude, category FROM locations");
             if (!$stmt) 
             {
                 printf("Query Prep failed: %s\n", $mysqli->error);
@@ -39,10 +39,11 @@ if (empty($_GET['id'])) {
             $stmt->execute();
             $stmt->store_result();
             $stores = array();
+            $allStores = array(); 
             $i = 0;
             if ($stmt->num_rows > 0) 
             {
-                $stmt->bind_result($store_name, $store_lat, $store_long);
+                $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
                 while ($stmt->fetch()) 
                 {
                     $theta = $store_long - $longitude;
@@ -52,10 +53,16 @@ if (empty($_GET['id'])) {
                     $km = $dist * 60 * 1.1515 * 1.609344;
                     if ($km < 10000) 
                     {
-                        $stores[$i]['name'] = $store_name;
-                        $stores[$i]['latitude'] = $store_lat;
-                        $stores[$i]['longitude'] = $store_long;
-                        $i++;
+                        $allStores[$j]['name'] = $store_name;
+                        $allStores[$j]['latitude'] = $store_lat;
+                        $allStores[$j]['longitude'] = $store_long;
+                        $j++;
+                        if ($store_category == $category) { 
+                            $stores[$i]['name'] = $store_name;
+                            $stores[$i]['latitude'] = $store_lat;
+                            $stores[$i]['longitude'] = $store_long;
+                            $i++;
+                        }
                     }
 	           }
             }
@@ -106,8 +113,12 @@ if (empty($_GET['id'])) {
             <div class="listing">
                 <ul>
                     <?php
-                        echo '<li>' .$store_name '</li>';
-                    ?>
+                        $i = 0;
+                        while($i < count($stores))
+                        {
+                            echo '<li>' .$stores[$i][name]. '</li>'
+                        }
+                    ?> 
                 </ul>
             </div>
         </div>
