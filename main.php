@@ -71,11 +71,19 @@ if (!empty($_GET['id'])) {
             $stmt->bind_result($store_name, $store_lat, $store_long, $store_category);
             while ($stmt->fetch())
             {
-                $theta = $store_long - $longitude;
-                $dist = sin(deg2rad($store_lat)) * sin(deg2rad($latitude)) +  cos(deg2rad($store_long)) * cos(deg2rad($longitude)) * cos(deg2rad($theta));
-                $dist = acos($dist);
-                $dist = rad2deg($dist);
-                $km = $dist * 60 * 1.1515 * 1.609344;
+              $earthRadius = 6371000
+              $latFrom = deg2rad($store_lat);
+              $lonFrom = deg2rad($store_long);
+              $latTo = deg2rad($latitude);
+              $lonTo = deg2rad($longitude);
+
+              $latDelta = $latTo - $latFrom;
+              $lonDelta = $lonTo - $lonFrom;
+
+              $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+
+              $km = ($angle * $earthRadius)/1000;
+
                 if ($km < 100000)
                 {
                     $allStores[$i]['name'] = $store_name;
