@@ -166,7 +166,8 @@ if (!empty($_GET['id'])) {
                 var map = new google.maps.Map(document.getElementById('map'),
                 {
                   zoom: 4,
-                  center: {lat: -33, lng: 151},
+//                  center: {lat: -33, lng: 151},
+                    center: new google.maps.LatLng(22.2780691, 114.16490905),
                   disableDefaultUI: true
                 });
             }
